@@ -1,50 +1,33 @@
 //NPM Packages
 import { useState, useEffect, FC } from "react";
 import { NavLink } from "react-router-dom";
+import reactDom from "react-dom";
 
 //Local files
-import fletnix from "assets/img/fletnix.png";
 
-import Actions from "./Actions";
+import burger from "assets/icns/burger.png";
+import cross from "assets/icns/cross.png";
 
 const HeaderMenu: FC = () => {
   // Local state
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const [open, setOpen] = useState(false);
+  const links = ["Contact", "Education", "Certification", "Work History"];
+  //Component
+  const Links = links.map((item, index) => <li key={index}>{item}</li>);
 
-  //Methods
-  const handleScroll = () => setScrollPosition(window.pageYOffset);
-  // Hook
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  return reactDom.createPortal(
+    <header>
+      <div className={open ? "overlay" : "overlay overlay-invisible"} />
+      <button className="icon" onClick={() => setOpen(!open)}>
+        <img src={open ? cross : burger} alt="Menu" />
+      </button>
 
-  return (
-    <header
-      className={scrollPosition === 0 ? "header-menu" : "header-menu black"}
-    >
-      <div className="bloc">
-        <NavLink to="/" className="home">
-          <img src={fletnix} alt="Home" />
-        </NavLink>
-
-        <nav>
-          <NavLink to="/" className="nav-item">
-            Home
-          </NavLink>
-          <NavLink to="/category/serie" className="nav-item">
-            Series
-          </NavLink>{" "}
-          <NavLink to="/category/film" className="nav-item">
-            Films
-          </NavLink>
-          <NavLink to="/category/documentary" className="nav-item">
-            Documentaries
-          </NavLink>
-        </nav>
+      <div className={open ? "sidebar sidebar-open" : "sidebar"}>
+        <ul>{Links}</ul>
       </div>
-      <Actions />
-    </header>
+    </header>,
+    //@ts-ignore
+    document.getElementById("sidebar")
   );
 };
 export default HeaderMenu;

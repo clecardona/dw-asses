@@ -1,6 +1,6 @@
-# FLETNIX
+# CV MAKER
 
-![img](https://scontent-arn2-1.xx.fbcdn.net/v/t1.18169-9/22308860_117189662461981_3463672015092833705_n.png?_nc_cat=110&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=NvFhrQJl8qAAX_OI6YQ&_nc_ht=scontent-arn2-1.xx&oh=5c77c8235adad12cc514dbc6bc2e6c87&oe=61A68EA2)
+![img](https://cdn.dribbble.com/users/2472716/screenshots/6125216/clean-resume-with-yellow-topbar-_4x.jpg?compress=1&resize=410x300)
 
 [![react](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
 [![sass](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)](https://sass-lang.com/)
@@ -11,39 +11,4 @@ This project was bootstrapped with Create React App.
 
 ## 1. Content
 
-This is a carbon copy of Netflix, for educational purpose only.
-
-#### [Go to website](https://fletnix-3640a.web.app/)
-
-In order to access the Content creator section here are credentials:
-
-- email : contentcreator@gmail.se
-- password : contentCreator
-
-## 2. Setup
-
-These are the instructions to run the project:
-
-1. Open the terminal and navigate to the folder where this readme file is located.
-2. Install dependencies:
-   `npm install`
-3. run the project:
-   `npm start`
-4. Open a browser at : `http://localhost:3000`
-
-## 3. Dependencies
-
-- Firebase Hosting
-- Firebase Firestore DB
-- Firebase Storage
-- Firebase Auth
-
-## 4. Project organization
-
-### 4.1 Requirement gathering
-
-[Google Docs link](https://docs.google.com/document/d/1qFWId6j_1z-XDBq7mPd-L1hY6pfYmJm-3M_k4ZnZOr0/edit)
-
-### 4.2 Project spreadsheet
-
-[Google Spreadsheets link](https://docs.google.com/spreadsheets/d/1rN3AfGJQrNwQckxY0lTpu61Qqt_aquz5lgfWji6Dq9w/edit#gid=894162645)
+This is a CV maker

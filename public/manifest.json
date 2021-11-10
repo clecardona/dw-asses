@@ -1,6 +1,6 @@
 {
-  "short_name": "FootX",
-  "name": "FootX - Learn new Tricks",
+  "short_name": "The Job Coach",
+  "name": "The Job Coach - CV Maker",
   "icons": [
     {
       "src": "favicon.ico",
@@ -22,7 +22,7 @@
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff",
-  "description": "Learning management system",
+  "description": "Web app",
   "screenshots": [
     {
       "src": "/images/screenshot1.png",

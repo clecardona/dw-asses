@@ -18,14 +18,6 @@ export async function createDoc(path: string, data: object) {
   await addDoc(collectionReference, data);
 }
 
-/* function getUrlNameArray(files) {
-  let promises = files.map(async (item) => {
-    const url = await uploadFile(item);
-    return { name: item.name, url: url };
-  });
-  return Promise.all(promises);
-} */
-
 export async function createDocumentWithId(
   path: string,
   id: string,
