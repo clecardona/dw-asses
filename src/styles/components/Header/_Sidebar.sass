@@ -10,6 +10,7 @@
 
 .overlay-invisible
     background: none
+    display: none
 .icon
     z-index: 11
     position: absolute
@@ -17,6 +18,9 @@
     right: 1em
 
 .sidebar
+    position: absolute
+    top: 0
+    right: 0
     display: block
     width: 0
     overflow: hidden
@@ -43,3 +47,29 @@
         padding: 2em
         li:hover
             color: blue
+
+@media only screen and (min-width: $tabletBreakpoint)
+    .icon,.overlay
+        display: none
+
+    .sidebar,.sidebar-open
+        display: flex
+
+        width: 100%
+        height: $header-height
+
+        align-items: center
+        padding-top: unset
+        box-shadow: unset
+
+        ul
+            display: grid
+            gap: 1em
+            grid-auto-flow: column
+
+            padding: 0 2em
+        li
+            padding-bottom: .3em
+            border-bottom: 3px solid $blue
+            &:hover
+                color: $blue

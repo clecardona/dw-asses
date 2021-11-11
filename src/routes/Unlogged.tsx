@@ -5,12 +5,12 @@ import { Route } from "react-router-dom";
 import Login from "components/AuthPages/Login";
 import SignUp from "components/AuthPages/Signup";
 import Recover from "components/AuthPages/Recover";
-import HeaderMenu from "components/shared/HeaderMenu";
+import Header from "components/shared/Header";
 
 export default function Unlogged() {
   return (
     <>
-      <HeaderMenu />
+      <Header />
       <Route component={Login} exact path="/" />
       <Route component={SignUp} path="/signup" />
       <Route component={Recover} path="/recover" />

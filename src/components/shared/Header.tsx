@@ -1,19 +1,20 @@
 //NPM Packages
-import { useState, useEffect, FC } from "react";
-import { NavLink } from "react-router-dom";
+import { useState, FC } from "react";
 import reactDom from "react-dom";
 
 //Local files
 
 import burger from "assets/icns/burger.png";
 import cross from "assets/icns/cross.png";
+import SorterNav from "components/SorterNav";
 
-const HeaderMenu: FC = () => {
+interface IProps {
+  setDisplay(): void;
+}
+
+const Header: FC<IProps> = ({ setDisplay }) => {
   // Local state
   const [open, setOpen] = useState(false);
-  const links = ["Contact", "Education", "Certification", "Work History"];
-  //Component
-  const Links = links.map((item, index) => <li key={index}>{item}</li>);
 
   return reactDom.createPortal(
     <header>
@@ -23,11 +24,11 @@ const HeaderMenu: FC = () => {
       </button>
 
       <div className={open ? "sidebar sidebar-open" : "sidebar"}>
-        <ul>{Links}</ul>
+        <SorterNav setDisplay={setDisplay} />
       </div>
     </header>,
     //@ts-ignore
     document.getElementById("sidebar")
   );
 };
-export default HeaderMenu;
+export default Header;
