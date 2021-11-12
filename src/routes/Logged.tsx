@@ -2,7 +2,7 @@
 import Admin from "components/AdminPages/Admin";
 import Login from "components/AuthPages/Login";
 import SignUp from "components/AuthPages/Signup";
-import Home from "components/Home/Home";
+import Home from "components/Home";
 
 import { Route } from "react-router-dom";
 import { useAuth } from "state/AuthProvider";

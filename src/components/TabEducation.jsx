@@ -1,6 +1,5 @@
 //NPM Packages
 import education from "assets/icns/education.png";
-import cv_photo from "assets/icns/cv-photo.png";
 
 //Local imports
 export default function TabEducation() {
