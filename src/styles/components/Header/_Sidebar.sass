@@ -70,12 +70,20 @@
             grid-auto-flow: column
 
             padding: 0 2em
+
         li
             padding-bottom: .3em
             border-bottom: 3px solid transparent
+            button h3
+                text-transform: capitalize
 
-            &:hover,.active
+            &:hover
                 border-bottom: 3px solid $blue
                 transition: .3s ease
                 p,h3,h4
                     color: $blue
+
+        .active
+            border-bottom: 3px solid $blue
+            p,h3,h4
+                color: $blue

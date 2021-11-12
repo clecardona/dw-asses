@@ -1,12 +1,12 @@
 import greg from "assets/img/greg.png";
+import tips from "assets/tips/tips.json"
 
-export default function TipsBox() {
+export default function TipsBox({tab}) {
   return (
     <div className="tips-box">
       <div className="text">
         <p>
-          Should we start with your CV or Resume? You can choose a template from
-          the selection below!
+         {tips.[tab]}
         </p>
       </div>
       <div className="circle">

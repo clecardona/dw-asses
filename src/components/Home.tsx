@@ -9,7 +9,6 @@ import TabAdditionalInfo from "./TabAdditionalInfo";
 import TabCertification from "./TabCertification";
 import TabContact from "./TabContact";
 import TabWorkHistory from "./TabWorkHistory";
-import TipsBox from "./TipsBox";
 
 //Local imports
 const Home: FC = () => {
@@ -18,7 +17,7 @@ const Home: FC = () => {
 
   return (
     <>
-      <Header setDisplay={setDisplay} />
+      <Header display={display} setDisplay={setDisplay} />
       <main className="page-form">
         {display === "photo" && <TabPhoto />}
         {display === "contact" && <TabContact />}

@@ -7,7 +7,7 @@ import TipsBox from "./TipsBox";
 export default function TabPhoto() {
   return (
     <>
-      <TipsBox />
+      <TipsBox tab="cv-photo" />
       <section>
         <h1>Choose a CV</h1>
         <div className="cv">
