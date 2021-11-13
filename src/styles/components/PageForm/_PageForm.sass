@@ -6,12 +6,24 @@
     gap: 1em
     grid-template-columns: max-content 1fr min-content
     grid-template-rows: 120px min-content
-    grid-template-areas: "title logo tips" "content content content"
+    grid-template-areas: "title logo tips" "content content content" "progress progress progress" "buttons buttons buttons"
 
     width: 100%
 
     h1
         grid-area: title
+    .logo
+        grid-area: logo
+    .tips-box
+        grid-area: tips
+    section
+        grid-area: content
+    .progress
+        grid-area: progress
+    .buttons
+        grid-area: buttons
+
+    h1
         align-self: flex-end
         margin: 0
 
@@ -19,7 +31,6 @@
         width: min-content
 
     .logo
-        grid-area: logo
         justify-self: flex-start
         align-self: flex-end
         margin-bottom: .6em
@@ -28,11 +39,9 @@
         margin-top: 2.2em
 
     .tips-box
-        grid-area: tips
         justify-self: flex-end
 
     section
-        grid-area: content
         width: 100%
         border: 1px solid #D0CFCF
         padding: 2em
@@ -41,23 +50,16 @@
             display: flex
             flex-direction: column
 
-            .box
-                width: 100%
-                display: flex
-                flex-direction: column
-                margin: 1em 0
-                padding: 1em
-                border-top: 1px solid rgba(0, 0, 0,.12 )
+            .years
+                display: grid
+                grid-template-columns: 1fr 1fr
+                gap: 1em
 
-                label,input
+                label select
                     width: 100%
-                p
-                    text-transform: capitalize
-
-                &:first-child
-                    border-top: 1px solid rgba(0, 0, 0,0 )
 
     section.cv-photo
         display: grid
         grid-template-columns: 1fr 1fr
+
         justify-items: center
