@@ -1,20 +1,31 @@
 //NPM Packages
-import agenda from "assets/icns/agenda.png";
 
 //Local imports
+import agenda from "assets/icns/agenda.png";
+import fields from "components/forms/contact.json";
 import TipsBox from "./TipsBox";
+import InputField from "./shared/InputField";
 
-export default function TabContact() {
+export default function TabContact({ form, onChange }) {
+  //Components
+  const Fields = fields.map((item, index) => (
+    <div className="form-item" key={item.key}>
+      <InputField
+        key={item.key}
+        options={item}
+        state={form[item.key]}
+        onChange={onChange}
+      />
+    </div>
+  ));
+
   return (
     <>
       <TipsBox tab="contact" />
+      <h1>Contact</h1>
+      <img src={agenda} alt="" className="logo" />
       <section>
-        <h1>
-          Contact <img src={agenda} alt="" />
-        </h1>
-        <div className="contact">
-          <div className="box">CONTACT STUFF</div>
-        </div>
+        <div className="box box-contact"> {Fields} </div>
       </section>
     </>
   );

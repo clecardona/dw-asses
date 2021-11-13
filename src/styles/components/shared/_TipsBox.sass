@@ -6,6 +6,8 @@
     align-items: center
 
     .text
+        @include flex-full-centered
+
         height: calc( $size - 30px )
         background: $white
 
@@ -13,8 +15,8 @@
         padding: 1em 5em 1em 1em
         box-shadow: 0 0 7px rgba(0,0 , 0,.2 )
         width: 500px
-
-        text-align: center
+        p
+            text-align: center
 
     .circle
         height: $size

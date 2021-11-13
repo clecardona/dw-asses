@@ -8,17 +8,16 @@ export default function TabPhoto() {
   return (
     <>
       <TipsBox tab="cv-photo" />
-      <section>
-        <h1>Choose a CV</h1>
-        <div className="cv">
-          <div className="box">
-            <p>with a photo</p>
-            <img src={cv_photo} alt="withphoto" />
-          </div>
-          <div className="box">
-            <p>without photo</p>
-            <img src={cv_no_photo} alt="nophoto" />
-          </div>
+      <h1>Choose a CV</h1>
+
+      <section className="cv-photo">
+        <div className="item">
+          <p>with a photo</p>
+          <img src={cv_photo} alt="withphoto" />
+        </div>
+        <div className="item">
+          <p>without photo</p>
+          <img src={cv_no_photo} alt="nophoto" />
         </div>
       </section>
     </>

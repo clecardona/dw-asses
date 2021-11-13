@@ -9,7 +9,7 @@ export default function SorterNav({ display, setDisplay }) {
     "work history",
     "additional info",
   ];
-  console.log(display);
+
   //Component
   const Links = links.map((item, index) => (
     <li className={display === item ? "active" : ""} key={index}>

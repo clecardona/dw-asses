@@ -7,13 +7,10 @@ export default function TabCertification() {
   return (
     <>
       <TipsBox tab="certification" />
+      <h1 className="certification-title">Certification & Training</h1>
+      <img src={certification} alt="" className="logo certification-logo" />
       <section>
-        <h1>
-          Certification & Training <img src={certification} alt="" />
-        </h1>
-        <div className="certification">
-          <div className="box">Certification stuff</div>
-        </div>
+        <div className="box">Certification stuff</div>
       </section>
     </>
   );

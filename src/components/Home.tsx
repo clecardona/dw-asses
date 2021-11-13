@@ -14,17 +14,38 @@ import TabWorkHistory from "./TabWorkHistory";
 const Home: FC = () => {
   //Local states
   const [display, setDisplay] = useState("photo");
+  const [form, setForm] = useState({ education: {}, work_history: {} });
 
+  // Methods
+  function onChange(key, value) {
+    const field = { [key]: value };
+    setForm({ ...form, ...field });
+  }
+
+  console.log(form);
+  //send to lacalStorage??
   return (
     <>
       <Header display={display} setDisplay={setDisplay} />
       <main className="page-form">
+        {/*   <form action=""> */}
         {display === "photo" && <TabPhoto />}
-        {display === "contact" && <TabContact />}
-        {display === "education" && <TabEducation />}
-        {display === "certification & training" && <TabCertification />}
-        {display === "work history" && <TabWorkHistory />}
-        {display === "additional info" && <TabAdditionalInfo />}
+        {display === "contact" && (
+          <TabContact form={form} onChange={onChange} />
+        )}
+        {display === "education" && (
+          <TabEducation form={form} onChange={onChange} />
+        )}
+        {display === "certification & training" && (
+          <TabCertification form={form} onChange={onChange} />
+        )}
+        {display === "work history" && (
+          <TabWorkHistory form={form} setForm={setForm} />
+        )}
+        {display === "additional info" && (
+          <TabAdditionalInfo form={form} onChange={onChange} />
+        )}
+        {/* </form> */}
       </main>
     </>
   );
