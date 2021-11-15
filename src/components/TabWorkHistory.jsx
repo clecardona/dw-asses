@@ -1,19 +1,17 @@
-//NPM Packages
 import { useState } from "react";
-//Local imports
 import TipsBox from "./TipsBox";
 import bag from "assets/icns/bag.png";
 import { useForm } from "react-hook-form";
+import Progress from "./Progress";
 
 //Local imports
 export default function TabWorkHistory({ form, setForm ,setDisplay}) {
+  const [quantity, setQuantity] = useState([0]);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  const [quantity, setQuantity] = useState([0]);
 
 
   function addElement() {
@@ -24,13 +22,13 @@ export default function TabWorkHistory({ form, setForm ,setDisplay}) {
   function onSubmit(data) {
     setForm({ ...form, work_history: data });
   }
-  console.log(errors);
+
 
   const years =Array.from(Array(new Date().getFullYear() - 1979), (_, i) => (i + 1980).toString())
 
-  function Select({index,options}) {
+  function Select({index,options,label}) {
     return(
-      <select {...register(`title${index}`)} >
+      <select defaultValue={2021} {...register(`${index}${label}`)} >
       {options.map(value => (
         <option key={value} value={value}>
           {value}
@@ -44,39 +42,51 @@ export default function TabWorkHistory({ form, setForm ,setDisplay}) {
   const Fields = quantity.map((item, index) => (
     <div className="box" key={index}>
       <label>
-        <p>Company</p>
+        <h3>Company:</h3>
         <input
           type="text"
-          defaultValue={form.work_history.[`company${index}`]}
-          {...register(`company${index}`, { required: true, minLength: 3 })}
+          defaultValue={form.work_history.[`${index}company`]}
+          {...register(`${index}company`, { required: true, minLength: 3 })}
         />
-         {errors.[`company${index}`] &&  <p className="input-error">Enter Valid company name (> 3 chars) </p>}
+         {errors.[`${index}company`] &&  <p className="input-error">Enter Valid Title (> 3 chars) </p>}
       </label>
 
       <label>
-        <p>Title</p>
-        <input type="text" {...register(`title${index}`)} />
+        <h3>Title:</h3>
+        <input 
+        type="text" 
+        defaultValue={form.work_history.[`${index}title`]} 
+        {...register(`${index}title`, { required: true, minLength: 3 })} 
+        />
+        {errors.[`${index}title`] &&  <p className="input-error">Enter Valid company name (> 3 chars) </p>}
+
       </label>
 
       <label className="years">
-  
-        <label ><p>From</p><Select index={index} options={years}/></label>
-        <label ><p>To</p><Select index={index} options={years}/></label>
+        <label ><h3>From:</h3><Select index={index} options={years} label={"from"}/></label>
+        <label ><h3>To:</h3><Select index={index} options={years} label={"to"}/></label>
       </label>
   
 
       <label>
-        <p>City</p>
-        <input type="text" {...register(`city${index}`)} />
+        <h3>City:</h3>
+        <input 
+        type="text" 
+        defaultValue={form.work_history.[`${index}city`]} 
+        {...register(`${index}city`, { required: true, minLength: 3 })} 
+        />
+         {errors.[`${index}city`] &&  <p className="input-error">Enter Valid city (> 3 chars) </p>}
       </label>
 
       <label>
-        <p>Country</p>
-        <input type="text" {...register(`country${index}`)} />
+        <h3>Country:</h3>
+        <input type="text" 
+        defaultValue={form.work_history.[`${index}country`]} 
+        {...register(`${index}country`, { required: true, minLength: 3 })} />
+      {errors.[`${index}country`] &&  <p className="input-error">Enter Valid country (> 3 chars) </p>}
       </label>
     </div>
   ));
-
 
    
   
@@ -88,18 +98,11 @@ export default function TabWorkHistory({ form, setForm ,setDisplay}) {
       <section className="work-history" >
         <form onSubmit={handleSubmit(onSubmit)} id="myform">
           {Fields}
-      <button className="btn btn-addmore" type="button" onClick={addElement}>+ Add more</button>
+           <button className="btn btn-addmore" type="button" onClick={addElement}>+ Add more</button>
           <input type="submit" className="hidden" id="submit-form"/>
         </form>
-        
       </section>
-
-        <div className="progress">
-          <p>You're @@% done</p>
-          <div className="bar-container">
-            <div className="bar"/>    
-          </div>
-        </div>
+       <Progress progress={65}/>
         <div className="buttons">
           <button onClick={()=>setDisplay("certification & training")}className="btn btn-gray back" >Back</button>
           <label htmlFor="submit-form" className="btn btn-gray save" >Save</label>

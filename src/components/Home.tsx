@@ -14,11 +14,12 @@ import TabWorkHistory from "./TabWorkHistory";
 const Home: FC = () => {
   const initialForm = {
     education: {},
+    certification: {},
     work_history: {
-      company0: "Klarna",
-      title0: "Chief",
-      city0: "Stockholm",
-      country0: "Sweden",
+      "0company": "Klarna",
+      "0title": "Chief",
+      "0city": "Stockholm",
+      "0country": "Sweden",
     },
   };
   //Local states
@@ -46,7 +47,11 @@ const Home: FC = () => {
           <TabEducation form={form} onChange={onChange} />
         )}
         {display === "certification & training" && (
-          <TabCertification form={form} onChange={onChange} />
+          <TabCertification
+            form={form}
+            setForm={setForm}
+            setDisplay={setDisplay}
+          />
         )}
         {display === "work history" && (
           <TabWorkHistory
