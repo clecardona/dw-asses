@@ -12,6 +12,7 @@ export default function TabWorkHistory({ form, setForm ,setDisplay}) {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  
 
 
   function addElement() {
@@ -24,12 +25,13 @@ export default function TabWorkHistory({ form, setForm ,setDisplay}) {
   }
 
 
-  const years =Array.from(Array(new Date().getFullYear() - 1979), (_, i) => (i + 1980).toString())
 
-  function Select({index,options,label}) {
+  function Select({index,label}) {
+    const years =Array.from(Array(new Date().getFullYear() - 1979), (_, i) => (i + 1980).toString())
+    const currentYear=new Date().getFullYear()
     return(
-      <select defaultValue={2021} {...register(`${index}${label}`)} >
-      {options.map(value => (
+      <select defaultValue={currentYear} {...register(`${index}${label}`)} >
+      {years.map(value => (
         <option key={value} value={value}>
           {value}
         </option>
@@ -63,8 +65,8 @@ export default function TabWorkHistory({ form, setForm ,setDisplay}) {
       </label>
 
       <label className="years">
-        <label ><h3>From:</h3><Select index={index} options={years} label={"from"}/></label>
-        <label ><h3>To:</h3><Select index={index} options={years} label={"to"}/></label>
+        <label ><h3>From:</h3><Select index={index}  label={"from"}/></label>
+        <label ><h3>To:</h3><Select index={index}  label={"to"}/></label>
       </label>
   
 
