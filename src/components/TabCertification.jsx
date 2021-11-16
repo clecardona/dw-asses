@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 
 import Progress from './Progress';
 import TipsBox from './TipsBox';
+import ButtonAddMore from './shared/ButtonAddMore';
 
 export default function TabCertification({ form, setForm ,setDisplay}) {
   const [quantity, setQuantity] = useState([0]);
@@ -19,12 +20,13 @@ export default function TabCertification({ form, setForm ,setDisplay}) {
   }
 
   function onSubmit(data) {
-    setForm({ ...form, work_history: data });
+    setForm({ ...form, certification: data });
   }
 
   const Fields = quantity.map((item, index) => (
     <div className="box" key={index}>
-      <label>
+
+      <label className="domain">
         <h3>Certificate & Training in:</h3>
         <input
           type="text"
@@ -34,11 +36,11 @@ export default function TabCertification({ form, setForm ,setDisplay}) {
          {errors.[`${index}domain`] &&  <p className="input-error">Enter Valid Domain(> 3 chars) </p>}
       </label>
 
-      <label>
+      <label className="duration">
         <h3>Years Attended:</h3>
         <input 
         type="text" 
-        defaultValue={form.work_history.[`${index}duration`]} 
+        defaultValue={form.certification.[`${index}duration`]} 
         {...register(`${index}duration`, { required: true, minLength: 1 })} 
         />
         {errors.[`${index}duration`] &&  <p className="input-error">Field required </p>}
@@ -58,16 +60,10 @@ export default function TabCertification({ form, setForm ,setDisplay}) {
       <h1 className="certification-title">Certification & Training</h1>
       <img src={certification} alt="" className="logo certification-logo" />
 
-      <section className="cerification-training">
-        <form onSubmit={handleSubmit(onSubmit)} id="myform">
+      <section className="certification-training">
+        <form onSubmit={handleSubmit(onSubmit)} id="formCertification">
           {Fields}
-          <button
-            className="btn btn-addmore"
-            type="button"
-            onClick={addElement}
-          >
-            + Add more
-          </button>
+          <ButtonAddMore  onClick={addElement} >Add more</ButtonAddMore>
           <input type="submit" className="hidden" id="submit-form" />
         </form>
       </section>

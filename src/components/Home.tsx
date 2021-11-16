@@ -13,6 +13,8 @@ import TabWorkHistory from "./TabWorkHistory";
 //Local imports
 const Home: FC = () => {
   const initialForm = {
+    photo: {},
+    contact: {},
     education: {},
     certification: {},
     work_history: {
@@ -21,6 +23,7 @@ const Home: FC = () => {
       "0city": "Stockholm",
       "0country": "Sweden",
     },
+    additional_info: {},
   };
   //Local states
   const [display, setDisplay] = useState("photo");
@@ -39,12 +42,14 @@ const Home: FC = () => {
       <Header display={display} setDisplay={setDisplay} />
       <main className="page-form">
         {/*   <form action=""> */}
-        {display === "photo" && <TabPhoto />}
+        {display === "photo" && (
+          <TabPhoto form={form} setForm={setForm} setDisplay={setDisplay} />
+        )}
         {display === "contact" && (
-          <TabContact form={form} onChange={onChange} />
+          <TabContact form={form} setForm={setForm} setDisplay={setDisplay} />
         )}
         {display === "education" && (
-          <TabEducation form={form} onChange={onChange} />
+          <TabEducation form={form} setForm={setForm} setDisplay={setDisplay} />
         )}
         {display === "certification & training" && (
           <TabCertification
@@ -61,7 +66,11 @@ const Home: FC = () => {
           />
         )}
         {display === "additional info" && (
-          <TabAdditionalInfo form={form} onChange={onChange} />
+          <TabAdditionalInfo
+            form={form}
+            setForm={setForm}
+            setDisplay={setDisplay}
+          />
         )}
         {/* </form> */}
       </main>

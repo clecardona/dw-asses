@@ -1,0 +1,13 @@
+#formCertification .box
+
+    display: grid
+    grid-gap: 1em
+    grid-auto-columns: 1fr
+    grid-template-rows: repeat(2,min-content)
+    grid-template-areas: "domain" "duration"
+
+    .domain
+        grid-area: domain
+
+    .duration
+        grid-area: duration

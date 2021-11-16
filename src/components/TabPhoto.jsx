@@ -4,21 +4,34 @@ import cv_photo from "assets/icns/cv-photo.png";
 import TipsBox from "./TipsBox";
 
 //Local imports
-export default function TabPhoto() {
+export default function TabPhoto({ form, setForm, setDisplay }) {
   return (
     <>
       <TipsBox tab="cv-photo" />
       <h1>Choose a CV</h1>
 
       <section className="cv-photo">
-        <div className="item">
+        <button
+          className="item"
+          onClick={() => {
+            setForm({ ...form, photo: true });
+            setDisplay("contact");
+          }}
+        >
           <p>with a photo</p>
           <img src={cv_photo} alt="withphoto" />
-        </div>
-        <div className="item">
+        </button>
+
+        <button
+          className="item"
+          onClick={() => {
+            setForm({ ...form, photo: false });
+            setDisplay("contact");
+          }}
+        >
           <p>without photo</p>
           <img src={cv_no_photo} alt="nophoto" />
-        </div>
+        </button>
       </section>
     </>
   );

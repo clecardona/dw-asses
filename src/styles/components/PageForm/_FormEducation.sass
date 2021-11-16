@@ -1,0 +1,25 @@
+#formEducation .box
+
+    display: grid
+    grid-gap: 1em
+    grid-auto-columns: 1fr 1fr
+    grid-template-rows: repeat(3,min-content)
+    grid-template-areas: "school school" "degree ." "program duration"
+
+    .school
+        grid-area: school
+    .degree
+        grid-area: degree
+        display: grid
+        gap: 1em
+        grid-template-columns: max-content 1fr
+        align-items: center
+        justify-items: flex-start
+        input
+            width: max-content
+            margin: 0
+
+    .program
+        grid-area: program
+    .duration
+        grid-area: duration

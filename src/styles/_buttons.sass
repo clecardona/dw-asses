@@ -14,14 +14,38 @@ button
   font-weight: 500
 
 .btn-blue
-  background: #1489E6
+  background: $blue
   color: $white
+  &:hover
+    filter: brightness(.9)
 
 .btn-gray
   border: 1px solid #D0CFCF
+  &:hover
+    filter: brightness(.9)
 
 .btn-addmore
-  color: #1489E6
+  padding: 0
+  display: grid
+  gap: 1.5em
+  grid-template-columns: min-content 1fr
+  align-items: center
+  justify-items: flex-start
+  h3,p
+    color: $blue
+
+.btn-plus
+  padding: 0
+  display: grid
+  gap: 1.5em
+  grid-template-columns: min-content 1fr
+  align-items: center
+  justify-items: flex-start
+  h3,p
+    color: $blue
+
+  &:hover
+    filter: brightness(.9)
 
 .btn-main
   $color: $gray2
@@ -51,34 +75,6 @@ button
   &:disabled
     filter: saturate(0)
     opacity: 0.05
-
-.btn-ghost
-  $color: $gray2
-  $secondcolor: $white
-
-  transform: skewX(-20deg) translateY(-2px)
-
-  background: none
-  border: 2px solid $color
-  box-shadow: 3px 3px 0 orange
-
-  h3,h4
-    color: $color
-    text-transform: capitalize
-    transform: skewX(20deg)
-
-  .icon-btn
-    width: 20px
-    height: 20px
-    margin: 6px
-    filter: invert(0.5) sepia(1) saturate(5) hue-rotate(-45deg)
-
-  &:hover
-    transform: skewX(-20deg)
-    transition: ease 0.1s
-    box-shadow: unset
-    .icon-btn
-      filter: invert(1)
 
 .btn-300
   width: 300px

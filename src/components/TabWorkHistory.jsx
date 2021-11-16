@@ -3,6 +3,8 @@ import TipsBox from "./TipsBox";
 import bag from "assets/icns/bag.png";
 import { useForm } from "react-hook-form";
 import Progress from "./Progress";
+import ButtonAddMore from "./shared/ButtonAddMore";
+import ButtonPlus from "./shared/ButtonPlus";
 
 //Local imports
 export default function TabWorkHistory({ form, setForm ,setDisplay}) {
@@ -98,9 +100,10 @@ export default function TabWorkHistory({ form, setForm ,setDisplay}) {
       <h1>Work History</h1>
       <img src={bag} alt="" className="logo" />
       <section className="work-history" >
-        <form onSubmit={handleSubmit(onSubmit)} id="myform">
+        <form onSubmit={handleSubmit(onSubmit)} id="formWorkHistory">
           {Fields}
-           <button className="btn btn-addmore" type="button" onClick={addElement}>+ Add more</button>
+          <ButtonAddMore  onClick={addElement} >Add more</ButtonAddMore>
+          <div className="gap"><ButtonPlus>Gap Time</ButtonPlus> <p>Click here to add a gap betweeen your work experiences (e.g., maternity leave, paternity leave, family leave, personal leave). </p></div>
           <input type="submit" className="hidden" id="submit-form"/>
         </form>
       </section>

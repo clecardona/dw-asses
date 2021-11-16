@@ -1,0 +1,30 @@
+#formAdditionalInfo
+
+    display: grid
+    gap: 1em
+    grid-auto-flow: row
+
+    .inline-box
+        display: grid
+        gap: 1em
+        grid-template-columns: 140px 1fr 140px
+        align-items: flex-start
+        height: max-content
+
+        h3
+            padding-top: 1em
+
+        button h3
+            padding: unset
+
+        .vertical-input
+            display: grid
+
+            grid-auto-flow: row
+            input
+                width: 100%
+                margin-bottom: .3em
+
+    .anything_else
+        input
+            width: 100%
