@@ -8,7 +8,7 @@ import ButtonPlus from "./shared/ButtonPlus";
 
 //Local imports
 export default function TabWorkHistory({ form, setForm ,setDisplay}) {
-  const [quantity, setQuantity] = useState([0]);
+  const [quantity, setQuantity] = useState(Array(form.work_history.length).fill(0));
   const {
     register,
     handleSubmit,
@@ -16,23 +16,34 @@ export default function TabWorkHistory({ form, setForm ,setDisplay}) {
   } = useForm();
   
 
-
   function addElement() {
-    const newQuantity = [...quantity, 0];
+    const newQuantity = [...quantity, "album"];
     setQuantity(newQuantity);
   }
 
   function onSubmit(data) {
-    setForm({ ...form, work_history: data });
+   
+    let processedData=[]
+
+for (let index = 0; index < quantity.length; index++) {
+  processedData.push(getFields(data,index))
+}
+setForm({ ...form, work_history: processedData });
   }
 
 
+  function getFields(object,name){
+    const result = Object.keys(object).filter((key) => key.includes(name)).reduce((cur, key) => 
+    { return Object.assign(cur, { [key.substring(1)]: object[key] })}, {}); 
+    return result
+  }
 
-  function Select({index,label}) {
+
+  function Select({index,label,defaultValue}) {
     const years =Array.from(Array(new Date().getFullYear() - 1979), (_, i) => (i + 1980).toString())
     const currentYear=new Date().getFullYear()
     return(
-      <select defaultValue={currentYear} {...register(`${index}${label}`)} >
+      <select defaultValue={defaultValue ? defaultValue :currentYear} {...register(`${index}${label}`)} >
       {years.map(value => (
         <option key={value} value={value}>
           {value}
@@ -49,7 +60,7 @@ export default function TabWorkHistory({ form, setForm ,setDisplay}) {
         <h3>Company:</h3>
         <input
           type="text"
-          defaultValue={form.work_history.[`${index}company`]}
+          defaultValue={form.work_history[index].company}
           {...register(`${index}company`, { required: true, minLength: 3 })}
         />
          {errors.[`${index}company`] &&  <p className="input-error">Enter Valid Title (> 3 chars) </p>}
@@ -59,7 +70,7 @@ export default function TabWorkHistory({ form, setForm ,setDisplay}) {
         <h3>Title:</h3>
         <input 
         type="text" 
-        defaultValue={form.work_history.[`${index}title`]} 
+        defaultValue={form.work_history[index].title} 
         {...register(`${index}title`, { required: true, minLength: 3 })} 
         />
         {errors.[`${index}title`] &&  <p className="input-error">Enter Valid company name (> 3 chars) </p>}
@@ -67,8 +78,8 @@ export default function TabWorkHistory({ form, setForm ,setDisplay}) {
       </label>
 
       <label className="years">
-        <label ><h3>From:</h3><Select index={index}  label={"from"}/></label>
-        <label ><h3>To:</h3><Select index={index}  label={"to"}/></label>
+        <label ><h3>From:</h3><Select  defaultValue={form.work_history[index].from} index={index}  label={"from"}/></label>
+        <label ><h3>To:</h3><Select defaultValue={form.work_history[index].to} index={index}  label={"to"}/></label>
       </label>
   
 
@@ -76,7 +87,7 @@ export default function TabWorkHistory({ form, setForm ,setDisplay}) {
         <h3>City:</h3>
         <input 
         type="text" 
-        defaultValue={form.work_history.[`${index}city`]} 
+        defaultValue={form.work_history[index].city} 
         {...register(`${index}city`, { required: true, minLength: 3 })} 
         />
          {errors.[`${index}city`] &&  <p className="input-error">Enter Valid city (> 3 chars) </p>}
@@ -85,7 +96,7 @@ export default function TabWorkHistory({ form, setForm ,setDisplay}) {
       <label>
         <h3>Country:</h3>
         <input type="text" 
-        defaultValue={form.work_history.[`${index}country`]} 
+        defaultValue={form.work_history[index].country} 
         {...register(`${index}country`, { required: true, minLength: 3 })} />
       {errors.[`${index}country`] &&  <p className="input-error">Enter Valid country (> 3 chars) </p>}
       </label>

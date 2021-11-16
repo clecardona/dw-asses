@@ -17,26 +17,32 @@ const Home: FC = () => {
     contact: {},
     education: {},
     certification: {},
-    work_history: {
-      "0company": "Klarna",
-      "0title": "Chief",
-      "0city": "Stockholm",
-      "0country": "Sweden",
-    },
+    work_history: [
+      {
+        company: "Klarna",
+        title: "Chief",
+        city: "Stockholm",
+        country: "Sweden",
+        from: 2010,
+        to: 2012,
+      },
+      {
+        company: "Google",
+        title: "Chief",
+        city: "Los Angeles",
+        country: "USA",
+        from: 2012,
+        to: 2015,
+      },
+    ],
     additional_info: {},
   };
   //Local states
   const [display, setDisplay] = useState("photo");
   const [form, setForm] = useState(initialForm);
 
-  // Methods
-  function onChange(key, value) {
-    const field = { [key]: value };
-    setForm({ ...form, ...field });
-  }
-
-  console.log(form);
-  //send to lacalStorage??
+  console.log(form.work_history);
+  //send to localStorage??
   return (
     <>
       <Header display={display} setDisplay={setDisplay} />
