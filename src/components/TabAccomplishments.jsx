@@ -55,7 +55,7 @@ export default function TabAccomplishments({
 
       <section className="accomplishments">
         <h3>While you were working at</h3>
-        <h2>Job @{jobId}@</h2>
+        <h2>{form.work_history[jobId - 1].company } as {form.work_history[jobId - 1].title }</h2>
 
         <form onSubmit={handleSubmit(onSubmit)} id="formAccomplishments">
           <div className="box">

@@ -28,6 +28,7 @@ export default function TabAdditionalInfo({ form, setForm, setDisplay }) {
     return Object.values(result);
   }
 
+  //todo - refactor elsewhere
   function inputToArray(object) {
     const languages = getFields(object, "lang");
     const additional_skills = getFields(object, "add");

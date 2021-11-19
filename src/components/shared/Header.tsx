@@ -20,7 +20,10 @@ const Header: FC<IProps> = ({ display, setDisplay, setJobId }) => {
 
   return reactDom.createPortal(
     <header>
-      <div className={open ? "overlay" : "overlay overlay-invisible"} />
+      <div
+        className={open ? "overlay" : "overlay overlay-invisible"}
+        onClick={() => setOpen(!open)}
+      />
       <button className="icon" onClick={() => setOpen(!open)}>
         <img src={open ? cross : burger} alt="Menu" />
       </button>

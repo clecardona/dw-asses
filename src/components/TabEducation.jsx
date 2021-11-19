@@ -6,6 +6,7 @@ import education from "assets/icns/education.png";
 import TipsBox from "./TipsBox";
 import Progress from './Progress';
 import ButtonAddMore from "./shared/ButtonAddMore";
+import ButtonRemove from './shared/ButtonRemove';
 
 export default function TabEducation({ form, setForm, setDisplay }) {
   const [quantity, setQuantity] = useState([0]);
@@ -21,6 +22,13 @@ export default function TabEducation({ form, setForm, setDisplay }) {
     setQuantity(newQuantity);
   }
 
+  function removeElement(idx){
+    const newQuantity= [...quantity]
+    newQuantity.splice(idx,1) // track the index to target the correct field
+    setQuantity(newQuantity)
+    
+  }
+
   function onSubmit(data) {
     setForm({ ...form, education: data });
   }
@@ -28,15 +36,20 @@ export default function TabEducation({ form, setForm, setDisplay }) {
   //Components
  const Fields = quantity.map((item, index) => (
     <div className="box" key={index}>
-
+      {quantity.length >1 && index>0 && 
+      <div className="remove" onClick={(index)=>removeElement(index)} >
+        <h3>Remove section</h3>
+        <ButtonRemove />
+        </div>
+      }
       <label className="school" >
-        <h3>School:</h3>
+        <h4>School:</h4>
         <input
           type="text"
           defaultValue={form.education.[`${index}school`]}
           {...register(`${index}school`, { required: true, minLength: 3 })}
         />
-         {errors.[`${index}school`] &&  <p className="input-error">Enter Valid Domain(> 3 chars) </p>}
+         {errors.[`${index}school`] &&  <p className="input-error">Enter Valid Domain({'>'} 3 chars) </p>}
       </label>
 
       <label className="degree">

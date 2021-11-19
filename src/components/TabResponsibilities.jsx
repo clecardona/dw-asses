@@ -54,7 +54,7 @@ export default function TabResponsibilities({
 
       <section className="responsibilities">
         <h3>Let's start with </h3>
-        <h2>Job @{jobId}@</h2>
+        <h2>{form.work_history[jobId - 1].company } - {form.work_history[jobId - 1].title }</h2>
 
         <form onSubmit={handleSubmit(onSubmit)} id="formResponsibilities">
           <div className="box">

@@ -22,14 +22,12 @@ const Inputs= quantity.map((item,index)=>(
 
     <li className="vertical-input" key={index}>
     <input
- 
       type="text"
-      defaultValue={index}
-      //defaultValue={form.additional_info.[`${index}${target}`]}
+      defaultValue={form.additional_info.[`${index}${target}`]}
       {...register(`${index}${target}`, {  minLength: 3 })}
     />
      {errors.[`${index}${target}`] &&  <p   className="input-error">Enter valid field ({'>'} 3 chars) </p>}
-      <ButtonRemove onClick={(idx)=>removeElement(idx)} >Remove </ButtonRemove> 
+      {quantity.length >1 && <ButtonRemove onClick={(index)=>removeElement(index)} />}
   
   </li>
 )
