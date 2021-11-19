@@ -11,9 +11,10 @@ import SorterNav from "components/SorterNav";
 interface IProps {
   setDisplay(): void;
   display: string;
+  setJobId(): void;
 }
 
-const Header: FC<IProps> = ({ display, setDisplay }) => {
+const Header: FC<IProps> = ({ display, setDisplay, setJobId }) => {
   // Local state
   const [open, setOpen] = useState(false);
 
@@ -25,7 +26,11 @@ const Header: FC<IProps> = ({ display, setDisplay }) => {
       </button>
 
       <div className={open ? "sidebar sidebar-open" : "sidebar"}>
-        <SorterNav display={display} setDisplay={setDisplay} />
+        <SorterNav
+          display={display}
+          setDisplay={setDisplay}
+          setJobId={setJobId}
+        />
       </div>
     </header>,
     //@ts-ignore

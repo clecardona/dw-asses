@@ -1,6 +1,4 @@
-import React from "react";
-
-export default function SorterNav({ display, setDisplay }) {
+export default function SorterNav({ display, setDisplay, setJobId }) {
   const links = [
     "photo",
     "contact",
@@ -10,10 +8,20 @@ export default function SorterNav({ display, setDisplay }) {
     "additional info",
   ];
 
+  //responsibilities => work history
+  //accomplihments => work history
+
+  //const responsibilities = display === "responsibilities";
+
   //Component
   const Links = links.map((item, index) => (
     <li className={display === item ? "active" : ""} key={index}>
-      <button onClick={() => setDisplay(item)}>
+      <button
+        onClick={() => {
+          setJobId(0);
+          setDisplay(item);
+        }}
+      >
         <h3>{item}</h3>
       </button>
     </li>

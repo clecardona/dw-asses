@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import ButtonAddMore from './shared/ButtonAddMore';
+import ButtonRemove from './shared/ButtonRemove';
 
 export default function FieldAdditional({form,target,children,register,errors}) {
   const [quantity, setQuantity] = useState([0]);
@@ -10,6 +11,12 @@ export default function FieldAdditional({form,target,children,register,errors}) 
     setQuantity(newQuantity);
   }
 
+  function removeElement(idx){
+    const newQuantity= [...quantity]
+    newQuantity.splice(idx,1) // track the index to target the correct field
+  setQuantity(newQuantity)
+    
+  }
 
 const Inputs= quantity.map((item,index)=>(
 
@@ -17,10 +24,13 @@ const Inputs= quantity.map((item,index)=>(
     <input
  
       type="text"
-      defaultValue={form.additional_info.[`${index}${target}`]}
+      defaultValue={index}
+      //defaultValue={form.additional_info.[`${index}${target}`]}
       {...register(`${index}${target}`, {  minLength: 3 })}
     />
-     {errors.[`${index}${target}`] &&  <p   className="input-error">Enter valid field (> 3 chars) </p>}
+     {errors.[`${index}${target}`] &&  <p   className="input-error">Enter valid field ({'>'} 3 chars) </p>}
+      <ButtonRemove onClick={(idx)=>removeElement(idx)} >Remove </ButtonRemove> 
+  
   </li>
 )
 )
@@ -31,6 +41,7 @@ const Inputs= quantity.map((item,index)=>(
       <label className="inline-box">
         <h3>{children}:</h3>
         <ul>{Inputs}</ul>
+      
         <ButtonAddMore onClick={addElement}>Add more</ButtonAddMore>
       </label>
    

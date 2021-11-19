@@ -7,14 +7,18 @@ import ButtonAddMore from "./shared/ButtonAddMore";
 import ButtonPlus from "./shared/ButtonPlus";
 
 //Local imports
-export default function TabWorkHistory({ form, setForm ,setDisplay}) {
+export default function TabWorkHistory({ form, setForm ,setDisplay,jobId,setJobId}) {
   const [quantity, setQuantity] = useState(Array(form.work_history.length).fill(0));
+
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   
+
+
 
   function addElement() {
     const newQuantity = [...quantity, "album"];
@@ -118,11 +122,11 @@ setForm({ ...form, work_history: processedData });
           <input type="submit" className="hidden" id="submit-form"/>
         </form>
       </section>
-       <Progress progress={65}/>
+       <Progress progress={70}/>
         <div className="buttons">
           <button onClick={()=>setDisplay("certification & training")}className="btn btn-gray back" >Back</button>
           <label htmlFor="submit-form" className="btn btn-gray save" >Save</label>
-          <button onClick={()=>setDisplay("additional info")}className="btn btn-blue next" >Next</button>
+          <button onClick={()=>{setDisplay("responsibilities"); setJobId(jobId+1)}}className="btn btn-blue next" >Next</button>
         </div>
     </>
   );
