@@ -1,0 +1,117 @@
+.basic
+
+    h1
+        font-size: 24pt
+    h2
+        font-size: 18pt
+    h3
+        font-size: 16pt
+    h4
+        font-size: 12pt
+    p
+        font-size: 10pt
+
+    .photo
+        overflow: hidden
+        img
+            width: 100%
+            object-fit: cover
+
+    .title
+        background: #03548d
+
+        display: grid
+        grid-template-rows: min-content min-content 1fr
+        align-items: center
+
+        padding: .8cm
+
+        .name
+            color: $white
+            text-transform: capitalize
+            text-align: center
+            font-weight: 500
+            border-bottom: 1px solid $white
+        .role
+            color: $white
+            font-weight: 100
+            text-transform: capitalize
+            text-align: center
+
+    .contact
+        background: #03548d
+
+        display: grid
+        gap: .5cm
+        grid-auto-flow: column
+        justify-content: center
+        align-items: center
+
+        .address,.postcode
+            display: none
+        .email,.mobile,.linkedin
+            font-size: 10pt
+
+        *
+            color: $white
+
+    .highlights
+        padding: .8cm 2.5cm
+        background: rgba(0,0,0,.03)
+        li
+            list-style-type: disc
+            p
+                font-weight: 200
+
+    .content
+
+        display: grid
+        gap: .4cm
+        grid-auto-flow: row
+        grid-auto-rows: max-content
+
+        padding: .8cm 2cm
+
+        .work-history
+            display: grid
+            gap: .4cm
+            grid-auto-flow: row
+            grid-auto-rows: min-content
+            .heading1
+                display: flex
+                justify-content: space-between
+            h2
+                text-align: left
+
+            .responsibilities,.accomplishments
+                display: grid
+                grid-auto-flow: row
+                grid-auto-rows: min-content
+                list-style-type: disc
+
+                padding-left: .5cm
+                margin-bottom: .3cm
+            .accomplishments
+                list-style-type: none
+                p
+                    font-weight: 200
+
+        .education,.certification
+            .heading1
+                display: flex
+                justify-content: space-between
+                .data
+                    display: flex
+                    *
+                        margin-right: .3cm
+
+    .languages,.skills
+        background: rgba(0,0,0,.03)
+        padding: .8cm 2cm
+        ul
+            padding-left: .5cm
+            li
+                list-style-type: disc
+            h4,p
+                text-transform: capitalize
+                font-weight: 300
