@@ -1,16 +1,17 @@
 //@ts-nocheck
 //NPM Packages
+import { FC, useState } from "react";
 import Header from "components/shared/Header";
 import TabEducation from "components/TabEducation";
 import TabPhoto from "components/TabPhoto";
-import { FC, useState } from "react";
-
 import TabAdditionalInfo from "./TabAdditionalInfo";
 import TabCertification from "./TabCertification";
 import TabContact from "./TabContact";
 import TabWorkHistory from "./TabWorkHistory";
 import TabResponsibilities from "./TabResponsibilities";
 import TabAccomplishments from "./TabAccomplishments";
+import TabSummaries from "./TabSummaries";
+import mockup from "assets/backup/mockup.json";
 
 //Local imports
 const Home: FC = () => {
@@ -54,8 +55,8 @@ const Home: FC = () => {
   //Local states
   const [display, setDisplay] = useState("photo");
   const [jobId, setJobId] = useState(0);
-  const [form, setForm] = useState(initialForm);
-
+  const [form, setForm] = useState(mockup);
+  //const [form, setForm] = useState(initialForm);
   const numberOfItems = form.work_history.length;
 
   //console.log(form.work_history);
@@ -107,6 +108,15 @@ const Home: FC = () => {
             setForm={setForm}
             setDisplay={setDisplay}
             jobId={jobId}
+            setJobId={setJobId}
+            numberOfItems={numberOfItems}
+          />
+        )}
+        {display === "summaries" && (
+          <TabSummaries
+            form={form}
+            setForm={setForm}
+            setDisplay={setDisplay}
             setJobId={setJobId}
             numberOfItems={numberOfItems}
           />

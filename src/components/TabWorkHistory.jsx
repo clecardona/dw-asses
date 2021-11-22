@@ -64,7 +64,7 @@ setForm({ ...form, work_history: processedData });
         <h3>Company:</h3>
         <input
           type="text"
-          defaultValue={form.work_history[index].company}
+          defaultValue={form.work_history[index] ? form.work_history[index].company :""} 
           {...register(`${index}company`, { required: true, minLength: 3 })}
         />
          {errors.[`${index}company`] &&  <p className="input-error">Enter Valid Title (> 3 chars) </p>}
@@ -74,7 +74,7 @@ setForm({ ...form, work_history: processedData });
         <h3>Title:</h3>
         <input 
         type="text" 
-        defaultValue={form.work_history[index].title} 
+        defaultValue={form.work_history[index] ? form.work_history[index].title :""} 
         {...register(`${index}title`, { required: true, minLength: 3 })} 
         />
         {errors.[`${index}title`] &&  <p className="input-error">Enter Valid company name (> 3 chars) </p>}
@@ -82,8 +82,8 @@ setForm({ ...form, work_history: processedData });
       </label>
 
       <label className="years">
-        <label ><h3>From:</h3><Select  defaultValue={form.work_history[index].from} index={index}  label={"from"}/></label>
-        <label ><h3>To:</h3><Select defaultValue={form.work_history[index].to} index={index}  label={"to"}/></label>
+        <label ><h3>From:</h3><Select  defaultValue={form.work_history[index] ? form.work_history[index].from :""} index={index}  label={"from"}/></label>
+        <label ><h3>To:</h3><Select defaultValue={form.work_history[index] ? form.work_history[index].to :""} index={index}  label={"to"}/></label>
       </label>
   
 
@@ -91,18 +91,18 @@ setForm({ ...form, work_history: processedData });
         <h3>City:</h3>
         <input 
         type="text" 
-        defaultValue={form.work_history[index].city} 
+        defaultValue={form.work_history[index] ? form.work_history[index].city :""} 
         {...register(`${index}city`, { required: true, minLength: 3 })} 
         />
-         {errors.[`${index}city`] &&  <p className="input-error">Enter Valid city (> 3 chars) </p>}
+         {errors.[`${index}city`] &&  <p className="input-error">Enter Valid city ({'>'} 3 chars) </p>}
       </label>
 
       <label>
         <h3>Country:</h3>
         <input type="text" 
-        defaultValue={form.work_history[index].country} 
+        defaultValue={form.work_history[index] ? form.work_history[index].country :""} 
         {...register(`${index}country`, { required: true, minLength: 3 })} />
-      {errors.[`${index}country`] &&  <p className="input-error">Enter Valid country (> 3 chars) </p>}
+      {errors.[`${index}country`] &&  <p className="input-error">Enter Valid country ({'>'} 3 chars) </p>}
       </label>
     </div>
   ));

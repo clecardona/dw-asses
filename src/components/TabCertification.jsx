@@ -7,7 +7,7 @@ import TipsBox from './TipsBox';
 import ButtonAddMore from './shared/ButtonAddMore';
 
 export default function TabCertification({ form, setForm ,setDisplay}) {
-  const [quantity, setQuantity] = useState([0]);
+  const [quantity, setQuantity] = useState(Array(form.certification.length).fill(0));
   const {
     register,
     handleSubmit,
@@ -30,7 +30,7 @@ export default function TabCertification({ form, setForm ,setDisplay}) {
         <h3>Certificate & Training in:</h3>
         <input
           type="text"
-          defaultValue={form.certification.[`${index}domain`]}
+          defaultValue={form.certification[index] ? form.certification[index].domain : ""}
           {...register(`${index}domain`, { required: true, minLength: 3 })}
         />
          {errors.[`${index}domain`] &&  <p className="input-error">Enter Valid Domain(> 3 chars) </p>}
@@ -40,7 +40,7 @@ export default function TabCertification({ form, setForm ,setDisplay}) {
         <h3>Years Attended:</h3>
         <input 
         type="text" 
-        defaultValue={form.certification.[`${index}duration`]} 
+        defaultValue={form.certification[index] ? form.certification[index].duration : ""} 
         {...register(`${index}duration`, { required: true, minLength: 1 })} 
         />
         {errors.[`${index}duration`] &&  <p className="input-error">Field required </p>}

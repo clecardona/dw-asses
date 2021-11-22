@@ -50,7 +50,7 @@ export default function TabAccomplishments({
   return (
     <>
       <TipsBox tab="accomplishments" />
-      <h1 className="certification-title">Job @{jobId}@ Accomplishments</h1>
+      <h1 className="certification-title">Job {jobId} Accomplishments</h1>
       <img src={job} alt="" className="logo certification-logo" />
 
       <section className="accomplishments">
@@ -96,7 +96,7 @@ export default function TabAccomplishments({
               const newJobId= jobId+1
               setJobId(newJobId)
             }else{
-              setDisplay("additional info")
+              setDisplay("summaries")
             }
           }}
           className="btn btn-blue next"

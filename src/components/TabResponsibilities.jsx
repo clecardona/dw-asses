@@ -11,8 +11,7 @@ export default function TabResponsibilities({
   form,
   setForm,
   setDisplay,
-  jobId,
-  numberOfItems,
+  jobId
 }) {
   const [quantity, setQuantity] = useState([0, 0, 0]);
   const {
@@ -49,7 +48,7 @@ export default function TabResponsibilities({
   return (
     <>
       <TipsBox tab="responsibilities" />
-      <h1 className="certification-title">Job @{jobId}@ Responsibilities</h1>
+      <h1 className="certification-title">Job {jobId} Responsibilities</h1>
       <img src={job} alt="" className="logo certification-logo" />
 
       <section className="responsibilities">
