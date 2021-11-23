@@ -17,12 +17,13 @@ button
   background: $blue
   color: $white
   &:hover
-    filter: brightness(.9)
+    background: $darkBlue
 
 .btn-gray
   border: 1px solid #D0CFCF
   &:hover
-    filter: brightness(.9)
+    background: #D0CFCF
+    color: $white
 
 .btn-addmore
   padding: 0
@@ -36,6 +37,13 @@ button
   h3,p
     color: $blue
 
+  &:hover
+
+    h3,p
+      color: $darkBlue
+    img
+      filter: saturate(.7)
+
 .btn-remove
   padding: 0
   align-items: center
@@ -46,7 +54,7 @@ button
     color: $blue
 
 .btn-plus
-  padding: 0
+  padding: 0s
   display: grid
   gap: 1.5em
   grid-template-columns: min-content 1fr
@@ -58,60 +66,16 @@ button
     color: $blue
 
   &:hover
-    filter: brightness(.9)
-
-.btn-main
-  $color: $gray2
-  $secondcolor: $yellow
-
-  background: $color
-  border: 1px solid $color
-  transform: skewX(-20deg) translateY(-2px)
-  box-shadow: 3px 3px 0 orange
-
-  h3,h4
-    color: $secondcolor
-    text-transform: capitalize
-    transform: skewX(20deg)
-
-  .icon-btn
-    width: 20px
-    height: 20px
-    margin: 6px
-    filter: invert(1)
-
-  &:hover
-    transform: skewX(-20deg)
-    box-shadow: unset
-    transition: ease 0.1s
-
-  &:disabled
-    filter: saturate(0)
-    opacity: 0.05
-
-.btn-300
-  width: 300px
-
-.btn-140
-  width: 140px
-
-.btn-180
-  width: 100%
-  max-width: 180px
+    h3,p
+      color: $darkBlue
+    img
+      filter: saturate(.7)
 
 .btn-delete
   background: $red
   color: $gray2
   border-radius: 2px
 
-  filter: brightness(.9)
-  &:hover
-    filter: brightness(1)
-    transition: ease .1s
-
-.btn-orange
-  background: orange
-  color: $black
   filter: brightness(.9)
   &:hover
     filter: brightness(1)
@@ -139,60 +103,12 @@ button
   color: $white
   box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 1px 0px
 
-.btn-play
-  display: flex
-  align-items: center
-  background: $white
+.btn-300
+  width: 300px
 
-  padding: .8rem 2.4rem
-  border-radius: 4px
+.btn-140
+  width: 140px
 
-  font-size: 1.6rem
-  font-weight: bold
-  img
-    margin-right: .6em
-  &:hover
-    background: rgba(255,255 ,255 ,.8)
-    transition: .3s ease
-
-.btn-more-info
-  display: flex
-  align-items: center
-  background: rgba(109,109,110,0.6)
-  color: $white
-
-  padding: .8rem 2.4rem
-  border-radius: 4px
-
-  font-size: 1.6rem
-  font-weight: bold
-  img
-    margin-right: .6em
-  &:hover
-    background: rgba(109,109,110,0.4)
-    transition: .3s ease
-
-.btn-season
-  display: flex
-  flex-direction: row
-  justify-content: flex-end
-  align-items: center
-  min-width: 8em
-
-  position: relative
-  font-size: 1.2em
-  background-color: rgb(36, 36, 36)
-  padding: 0.5em 1em
-
-  color: white
-  cursor: pointer
-  border: 0.1em solid rgb(77, 77, 77)
-  border-radius: 0.2em
-  img
-    height: 5px
-    margin-left: .6em
-
-.open
-  img
-    transition: .2s ease
-    transform: rotate(180deg)
+.btn-180
+  width: 100%
+  max-width: 180px

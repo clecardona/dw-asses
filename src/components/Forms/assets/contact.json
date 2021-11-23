@@ -1,0 +1,49 @@
+[
+  {
+    "label": "First name",
+    "labelKey": "firstname",
+    "verif": { "required": true, "minLength": 3 }
+  },
+  {
+    "label": "Last name",
+    "labelKey": "lastname",
+    "verif": { "required": true, "minLength": 3 }
+  },
+  {
+    "label": "Middle name ",
+    "labelKey": "middlename",
+    "verif": { "required": false, "minLength": 3 }
+  },
+  {
+    "label": "Email ",
+    "labelKey": "email",
+    "verif": { "required": true },
+    "type": "email"
+  },
+  {
+    "label": "Mobile ",
+    "labelKey": "mobile",
+    "verif": { "required": true },
+    "type": "tel"
+  },
+  {
+    "label": "LinkedIn ",
+    "labelKey": "linkedin",
+    "verif": { "required": true, "minLength": 15 }
+  },
+  {
+    "label": "Address ",
+    "labelKey": "address",
+    "verif": { "required": true, "minLength": 5 }
+  },
+  {
+    "label": "City ",
+    "labelKey": "city",
+    "verif": { "required": true, "minLength": 3 }
+  },
+  {
+    "label": "Postal Code ",
+    "labelKey": "postcode",
+    "verif": { "required": true, "minLength": 5 }
+  }
+]

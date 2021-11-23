@@ -1,6 +1,6 @@
 export default function SorterNav({ display, setDisplay, setJobId }) {
   const links = [
-    "photo",
+    "start",
     "contact",
     "education",
     "certification & training",

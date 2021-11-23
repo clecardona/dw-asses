@@ -1,0 +1,7 @@
+[
+  {
+    "label": "Reason",
+    "labelKey": "reason",
+    "verif": { "required": true, "minLength": 3 }
+  }
+]

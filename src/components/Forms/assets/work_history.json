@@ -1,0 +1,22 @@
+[
+  {
+    "label": "Company",
+    "labelKey": "company",
+    "verif": { "required": true, "minLength": 3 }
+  },
+  {
+    "label": "Title",
+    "labelKey": "title",
+    "verif": { "required": true, "minLength": 3 }
+  },
+  {
+    "label": "City ",
+    "labelKey": "city",
+    "verif": { "required": true, "minLength": 3 }
+  },
+  {
+    "label": "Country ",
+    "labelKey": "country",
+    "verif": { "required": true, "minLength": 5 }
+  }
+]

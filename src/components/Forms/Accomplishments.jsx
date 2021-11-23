@@ -1,19 +1,19 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import Progress from "./Progress";
-import TipsBox from "./TipsBox";
-import ButtonAddMore from "./shared/ButtonAddMore";
+import Progress from "../Progress";
+import TipsBox from "../TipsBox";
+import ButtonAddMore from "../shared/ButtonAddMore";
 import job from "assets/icns/job.png";
 import trophy from "assets/icns/trophy.png";
 
-export default function TabAccomplishments({
+export default function Accomplishments({
   form,
   setForm,
   setDisplay,
   jobId,
   setJobId,
-  numberOfItems
+  numberOfItems,
 }) {
   const [quantity, setQuantity] = useState([0, 0, 0]);
   const {
@@ -42,7 +42,11 @@ export default function TabAccomplishments({
             minLength: 10,
           })}
         />
-        {errors.[`${index}accomplishment`] &&  <p className="input-error">Enter Valid Information({'>'} 10 chars) </p>}
+        {errors[`${index}accomplishment`] && (
+          <p className="input-error">
+            Enter Valid Information({">"} 10 chars){" "}
+          </p>
+        )}
       </label>
     </li>
   ));
@@ -55,14 +59,17 @@ export default function TabAccomplishments({
 
       <section className="accomplishments">
         <h3>While you were working at</h3>
-        <h2>{form.work_history[jobId - 1].company } as {form.work_history[jobId - 1].title }</h2>
+        <h2>
+          {form.work_history[jobId - 1].company} as{" "}
+          {form.work_history[jobId - 1].title}
+        </h2>
 
         <form onSubmit={handleSubmit(onSubmit)} id="formAccomplishments">
           <div className="box">
             <img src={trophy} alt="" className="checklist" />
             <h3 className="label">
-            What were you the proudest of? Did you launch anything special? 
-            Did you initiate anything ? 
+              What were you the proudest of? Did you launch anything special?
+              Did you initiate anything ?
             </h3>
             <p>
               <strong>Think carefully! </strong>
@@ -90,13 +97,12 @@ export default function TabAccomplishments({
         </label>
         <button
           onClick={() => {
-
-            if(jobId < numberOfItems){
-              setDisplay("responsibilities")
-              const newJobId= jobId+1
-              setJobId(newJobId)
-            }else{
-              setDisplay("summaries")
+            if (jobId < numberOfItems) {
+              setDisplay("responsibilities");
+              const newJobId = jobId + 1;
+              setJobId(newJobId);
+            } else {
+              setDisplay("summaries");
             }
           }}
           className="btn btn-blue next"
