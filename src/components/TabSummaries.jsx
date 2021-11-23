@@ -4,8 +4,10 @@ import { useForm } from "react-hook-form";
 import Progress from "./Progress";
 import TipsBox from "./TipsBox";
 import ButtonAddMore from "./shared/ButtonAddMore";
-import checklist from "assets/icns/checklist.png";
+
 import job from "assets/icns/job.png";
+import Responsibility from "./Responsibility";
+import Accomplishment from "./Accomplishment";
 
 export default function TabSummaries({
   form,
@@ -32,30 +34,15 @@ export default function TabSummaries({
   }
 
   console.log(form);
+
   //Components
 
   const WorkHistory = form.work_history.map((item, index) => {
     const Responsibilities = item.responsibilities.map((item, index) => (
-      <button
-        className="list-item"
-        key={index}
-        onClick={() => alert(`${item}`)}
-      >
-        <h4>{item}</h4>
-        <h3 className="btn-edit">Edit</h3>
-      </button>
+      <Responsibility item={item} />
     ));
     const Accomplishments = item.accomplishments.map((item, index) => (
-      <>
-        <button
-          className="list-item"
-          key={index}
-          onClick={() => alert(`${item}`)}
-        >
-          <h4>{item}</h4>
-          <h3 className="btn-edit">Edit</h3>
-        </button>
-      </>
+      <Accomplishment item={item} />
     ));
 
     return (
@@ -87,10 +74,6 @@ export default function TabSummaries({
 
       <section className="summaries">
         <h3>This is a summary of everything you did: </h3>
-        <h2>
-          {/* {form.work_history[jobId - 1].company} -{" "}
-          {form.work_history[jobId - 1].title} */}
-        </h2>
 
         <form onSubmit={handleSubmit(onSubmit)} id="formSummaries">
           <div className="box">
