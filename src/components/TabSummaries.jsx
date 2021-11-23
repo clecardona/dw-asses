@@ -37,19 +37,31 @@ export default function TabSummaries({
 
   //Components
 
-  const WorkHistory = form.work_history.map((item, index) => {
-    const Responsibilities = item.responsibilities.map((item, index) => (
-      <Responsibility item={item} />
+  const WorkHistory = form.work_history.map((itm, index) => {
+    const Responsibilities = itm.responsibilities.map((item, index) => (
+      <Responsibility
+        item={item}
+        itemIndex={index}
+        formSection={form.work_history.responsibilities}
+        register={register}
+        errors={errors}
+      />
     ));
-    const Accomplishments = item.accomplishments.map((item, index) => (
-      <Accomplishment item={item} />
+    const Accomplishments = itm.accomplishments.map((item, index) => (
+      <Accomplishment
+        item={item}
+        itemIndex={index}
+        formSection={form.work_history.accomplishments}
+        register={register}
+        errors={errors}
+      />
     ));
 
     return (
       <li className="card" key={index}>
         <div className="heading1">
           <h2>
-            {item.company} , {item.title} , {item.from} - {item.to}
+            {itm.company} , {itm.title} , {itm.from} - {itm.to}
           </h2>
         </div>
         <div className="responsibilities">

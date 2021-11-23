@@ -52,7 +52,7 @@ export default function WorkHistory({
 
   //Components
   const Boxes = quantity.map((item, index) => (
-    <div className="box" key={index}>
+    <div className="box" key={`box${index}`}>
       <WorkFields
         formSection={formSection}
         errors={errors}
@@ -88,21 +88,19 @@ export default function WorkHistory({
     </div>
   ));
 
-  console.log(gapSection);
-
   const GapBoxes = gapQuantity.map((item, index) => (
-    <div className="box" key={index}>
+    <div className="box" key={`gapbox${index}`}>
+      {quantity.length > 1 && index > 0 && (
+        <ButtonRemove
+          onClick={(index) => removeElement(index, quantity, setQuantity)}
+        />
+      )}
       <GapFields
         formSection={gapSection}
         errors={errors}
         register={register}
         boxId={index}
       />
-      {quantity.length > 1 && index > 0 && (
-        <ButtonRemove
-          onClick={(index) => removeElement(index, quantity, setQuantity)}
-        />
-      )}
       <label className="years">
         <label>
           <h3>From:</h3>
@@ -110,7 +108,7 @@ export default function WorkHistory({
             register={register}
             defaultValue={gapSection[index] ? gapSection[index].from : ""}
             index={index}
-            label={"from"}
+            label={"gapfrom"}
           />
         </label>
         <label>
@@ -119,7 +117,7 @@ export default function WorkHistory({
             register={register}
             defaultValue={gapSection[index] ? gapSection[index].to : ""}
             index={index}
-            label={"to"}
+            label={"gapto"}
           />
         </label>
       </label>
