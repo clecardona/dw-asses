@@ -1,7 +1,7 @@
-import formData from "components/Forms/assets/gap_history.json";
-import FormInput from "components/FormInput";
+import formData from "components/Forms/assets/work_history.json";
+import FormInput from "components/Forms/FormInput";
 
-export default function GapFields({ formSection, errors, register, boxId }) {
+export default function WorkFields({ formSection, errors, register, boxId }) {
   const Fields = formData.map((item, index) => (
     <FormInput
       key={index}

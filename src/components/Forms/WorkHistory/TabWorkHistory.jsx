@@ -1,18 +1,18 @@
 import { useState } from "react";
-import TipsBox from "../TipsBox";
-import bag from "assets/icns/bag.png";
 import { useForm } from "react-hook-form";
-import Progress from "../Progress";
-import ButtonAddMore from "../shared/ButtonAddMore";
-import ButtonPlus from "../shared/ButtonPlus";
-import ButtonRemove from "../shared/ButtonRemove";
+// Local Files
+import TipsBox from "components/TipsBox";
+import bag from "assets/icns/bag.png";
+import Progress from "components/Progress";
+import ButtonAddMore from "components/shared/ButtonAddMore";
+import ButtonPlus from "components/shared/ButtonPlus";
+import ButtonRemove from "components/shared/ButtonRemove";
 import { addElement, removeElement } from "components/Forms/formFunctions";
-import WorkFields from "./WorkFields";
-import GapFields from "./GapFields";
-import WorkSelect from "./WorkSelect";
+import WorkFields from "components/Forms/WorkHistory/WorkFields";
+import GapFields from "components/Forms/WorkHistory/GapFields";
+import WorkSelect from "components/Forms/WorkHistory/PeriodSelect";
 
-//Local imports
-export default function WorkHistory({
+export default function TabWorkHistory({
   form,
   setForm,
   setDisplay,

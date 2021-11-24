@@ -1,4 +1,4 @@
-export default function Select({ index, label, defaultValue, register }) {
+export default function PeriodSelect({ index, label, defaultValue, register }) {
   const years = Array.from(Array(new Date().getFullYear() - 1979), (_, i) =>
     (i + 1980).toString()
   );

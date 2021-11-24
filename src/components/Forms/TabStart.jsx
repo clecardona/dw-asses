@@ -1,10 +1,10 @@
 //NPM Packages
 import cv_no_photo from "assets/icns/cv-no-photo.png";
 import cv_photo from "assets/icns/cv-photo.png";
-import TipsBox from "./TipsBox";
+import TipsBox from "../TipsBox";
 
 //Local imports
-export default function TabPhoto({ form, setForm, setDisplay }) {
+export default function TabStart({ form, setForm, setDisplay }) {
   return (
     <>
       <TipsBox tab="cv-photo" />

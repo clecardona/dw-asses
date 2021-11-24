@@ -1,12 +1,14 @@
 import { useState } from "react";
-import Modal from "./Modal/Modal";
+import Modal from "../../Modal/Modal";
 
-export default function Accomplishment({
+export default function Mapper({
   item,
   formSection,
   itemIndex,
   register,
   errors,
+  form,
+  setForm,
 }) {
   const [open, setOpen] = useState(false);
 
@@ -24,6 +26,8 @@ export default function Accomplishment({
         itemIndex={itemIndex}
         register={register}
         errors={errors}
+        form={form}
+        setForm={setForm}
       />
     </>
   );

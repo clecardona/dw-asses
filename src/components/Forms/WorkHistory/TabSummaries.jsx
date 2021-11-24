@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import Progress from "./Progress";
-import TipsBox from "./TipsBox";
-import ButtonAddMore from "./shared/ButtonAddMore";
+import Progress from "components/Progress";
+import TipsBox from "components/TipsBox";
+import ButtonAddMore from "components/shared/ButtonAddMore";
 
 import job from "assets/icns/job.png";
-import Responsibility from "./Responsibility";
-import Accomplishment from "./Accomplishment";
+import ListItem from "components/Forms/WorkHistory/ListItem";
 
 export default function TabSummaries({
   form,
@@ -39,21 +38,25 @@ export default function TabSummaries({
 
   const WorkHistory = form.work_history.map((itm, index) => {
     const Responsibilities = itm.responsibilities.map((item, index) => (
-      <Responsibility
+      <ListItem
         item={item}
-        itemIndex={index}
+        itemIndex={`responsibility${index}`}
         formSection={form.work_history.responsibilities}
         register={register}
         errors={errors}
+        form={form}
+        setForm={setForm}
       />
     ));
     const Accomplishments = itm.accomplishments.map((item, index) => (
-      <Accomplishment
+      <ListItem
         item={item}
-        itemIndex={index}
+        itemIndex={`accomplishment${index}`}
         formSection={form.work_history.accomplishments}
         register={register}
         errors={errors}
+        form={form}
+        setForm={setForm}
       />
     ));
 

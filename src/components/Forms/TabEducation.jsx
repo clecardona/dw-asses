@@ -1,16 +1,17 @@
-import certification from "assets/icns/certification.png";
+//NPM Packages
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-
-import Progress from "./Progress";
-import TipsBox from "./TipsBox";
-import ButtonAddMore from "components/shared/ButtonAddMore";
-import ButtonRemove from "components/shared/ButtonRemove";
-import FormInput from "components/FormInput";
+//Local imports
+import education from "assets/icns/education.png";
+import TipsBox from "../TipsBox";
+import Progress from "../Progress";
+import ButtonAddMore from "../shared/ButtonAddMore";
+import ButtonRemove from "../shared/ButtonRemove";
+import FormInput from "components/Forms/FormInput";
 import { addElement, removeElement } from "components/Forms/formFunctions";
 
-export default function TabCertification({ form, setForm, setDisplay }) {
-  const formSection = form.certification;
+export default function TabEducation({ form, setForm, setDisplay }) {
+  const formSection = form.education;
   const [quantity, setQuantity] = useState(Array(formSection.length).fill(0));
   const {
     register,
@@ -19,9 +20,10 @@ export default function TabCertification({ form, setForm, setDisplay }) {
   } = useForm();
 
   function onSubmit(data) {
-    setForm({ ...form, certification: data });
+    setForm({ ...form, education: data });
   }
 
+  //Component
   const Fields = quantity.map((item, index) => (
     <div className="box" key={index}>
       {quantity.length > 1 && index > 0 && (
@@ -29,15 +31,37 @@ export default function TabCertification({ form, setForm, setDisplay }) {
           onClick={(index) => removeElement(index, quantity, setQuantity)}
         />
       )}
+
       <FormInput
         formSection={formSection}
         index={index}
-        labelKey="domain"
+        labelKey="school"
         errors={errors}
         register={register}
         verif={{ required: true, minLength: 3 }}
       >
-        Certificate {"&"} Training in
+        School
+      </FormInput>
+
+      <label className="degree">
+        {/* todo - handle with 2 radio buttons ? */}
+        <h3>Degree ?</h3>
+        <input
+          type="checkbox"
+          defaultValue={formSection[index] ? formSection[index].degree : ""}
+          {...register(`${index}degree`, {})}
+        />
+      </label>
+
+      <FormInput
+        formSection={formSection}
+        index={index}
+        labelKey="program"
+        errors={errors}
+        register={register}
+        verif={{ required: true, minLength: 3 }}
+      >
+        Program
       </FormInput>
 
       <FormInput
@@ -55,12 +79,12 @@ export default function TabCertification({ form, setForm, setDisplay }) {
 
   return (
     <>
-      <TipsBox tab="certification" />
-      <h1 className="certification-title">Certification {"&"} Training</h1>
-      <img src={certification} alt="" className="logo certification-logo" />
+      <TipsBox tab="education" />
+      <h1>Education</h1>
+      <img src={education} alt="" className="logo" />
 
-      <section className="certification-training">
-        <form onSubmit={handleSubmit(onSubmit)} id="formCertification">
+      <section className="education">
+        <form onSubmit={handleSubmit(onSubmit)} id="formEducation">
           {Fields}
           <ButtonAddMore onClick={() => addElement(quantity, setQuantity)}>
             Add more
@@ -68,10 +92,10 @@ export default function TabCertification({ form, setForm, setDisplay }) {
           <input type="submit" className="hidden" id="submit-form" />
         </form>
       </section>
-      <Progress progress={55} />
+      <Progress progress={30} />
       <div className="buttons">
         <button
-          onClick={() => setDisplay("education")}
+          onClick={() => setDisplay("contact")}
           className="btn btn-gray back"
         >
           Back
@@ -80,7 +104,7 @@ export default function TabCertification({ form, setForm, setDisplay }) {
           Save
         </label>
         <button
-          onClick={() => setDisplay("work history")}
+          onClick={() => setDisplay("certification & training")}
           className="btn btn-blue next"
         >
           Next

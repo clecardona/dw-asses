@@ -7,7 +7,7 @@ import camera from "assets/icns/camera.png";
 import Progress from "components/Progress";
 import ButtonPlus from "components/shared/ButtonPlus";
 import TipsBox from "components/TipsBox";
-import FormInput from "components/FormInput";
+import FormInput from "components/Forms/FormInput";
 import formData from "components/Forms/assets/contact.json";
 
 //Local imports

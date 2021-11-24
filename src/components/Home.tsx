@@ -1,22 +1,24 @@
 //@ts-nocheck
 //NPM Packages
 import { FC, useState } from "react";
-import Header from "components/shared/Header";
-import Education from "components/Forms/Education";
-import TabPhoto from "components/TabPhoto";
-import TabAdditionalInfo from "./TabAdditionalInfo";
-import TabCertification from "./TabCertification";
-import Contact from "components/Forms/Contact";
-import WorkHistory from "components/Forms/WorkHistory";
-import TabResponsibilities from "./TabResponsibilities";
-import TabAccomplishments from "./Forms/Accomplishments";
-import TabSummaries from "./TabSummaries";
+
+//Local Files
 import mockup from "assets/backup/mockup.json";
+import Header from "components/shared/Header";
+import TabStart from "components/Forms/TabStart";
+import TabContact from "components/Forms/TabContact";
+import TabEducation from "components/Forms/TabEducation";
+import TabCertification from "components/Forms/TabCertification";
+import TabAdditionalInfo from "components/Forms/TabAdditionalInfo";
+import TabWorkHistory from "components/Forms/WorkHistory/TabWorkHistory";
+import TabResponsibilities from "components/Forms/WorkHistory/TabResponsibilities";
+import TabAccomplishments from "components/Forms/WorkHistory/TabAccomplishments";
+import TabSummaries from "components/Forms/WorkHistory/TabSummaries";
 
 //Local imports
 const Home: FC = () => {
   //Local states
-  const [display, setDisplay] = useState("start");
+  const [display, setDisplay] = useState("summaries");
   const [jobId, setJobId] = useState(0);
   const [form, setForm] = useState(mockup);
   const numberOfItems = form.work_history.length;
@@ -29,13 +31,13 @@ const Home: FC = () => {
       <main className="page-form">
         {/*   <form action=""> */}
         {display === "start" && (
-          <TabPhoto form={form} setForm={setForm} setDisplay={setDisplay} />
+          <TabStart form={form} setForm={setForm} setDisplay={setDisplay} />
         )}
         {display === "contact" && (
-          <Contact form={form} setForm={setForm} setDisplay={setDisplay} />
+          <TabContact form={form} setForm={setForm} setDisplay={setDisplay} />
         )}
         {display === "education" && (
-          <Education form={form} setForm={setForm} setDisplay={setDisplay} />
+          <TabEducation form={form} setForm={setForm} setDisplay={setDisplay} />
         )}
         {display === "certification & training" && (
           <TabCertification
@@ -45,7 +47,7 @@ const Home: FC = () => {
           />
         )}
         {display === "work history" && (
-          <WorkHistory
+          <TabWorkHistory
             form={form}
             setForm={setForm}
             setDisplay={setDisplay}

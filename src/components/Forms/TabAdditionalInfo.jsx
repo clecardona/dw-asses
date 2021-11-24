@@ -3,8 +3,8 @@
 import box from "assets/icns/box.png";
 import { useForm } from "react-hook-form";
 
-import FieldAdditional from "./FieldAdditional";
-import Progress from "./Progress";
+import FieldAdditional from "../FieldAdditional";
+import Progress from "../Progress";
 
 //Local imports
 export default function TabAdditionalInfo({ form, setForm, setDisplay }) {

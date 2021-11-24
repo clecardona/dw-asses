@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 //Local Files
 import cross from "assets/icns/cross.png";
 import FormInput from "components/FormInput";
+import FormModal from "./FormModal";
 
 interface IProps {
   open: boolean;
@@ -24,12 +25,16 @@ const Modal: FC<IProps> = ({
   itemIndex,
   register,
   errors,
+  form,
+  setForm,
 }) => {
-  const { handleSubmit } = useForm();
-
-  function onSubmit(data) {
-    setForm({ ...form, education: data });
-  }
+  const formOpts = {
+    element,
+    register,
+    form,
+    setForm,
+    itemIndex,
+  };
 
   if (!open) return null;
   return reactDom.createPortal(
@@ -44,22 +49,7 @@ const Modal: FC<IProps> = ({
           <img src={greg} alt="" />
         </div>
         <div className="content">
-          <form onSubmit={handleSubmit(onSubmit)} id="formModal">
-            <label>
-              <h3>Edit element selected </h3>
-              <textarea
-                rows="12"
-                cols="100"
-                value={element}
-                defaultValue={element}
-                {...register("item-modif", {})}
-              />
-            </label>
-            <input type="submit" className="hidden" id="submit-form" />
-            <label htmlFor="submit-form" className="btn btn-blue save">
-              Save
-            </label>
-          </form>
+          <FormModal formOpts={formOpts} />
         </div>
       </div>
     </>, //@ts-ignore

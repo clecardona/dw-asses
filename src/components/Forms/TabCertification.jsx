@@ -1,17 +1,16 @@
-//NPM Packages
+import certification from "assets/icns/certification.png";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-//Local imports
-import education from "assets/icns/education.png";
-import TipsBox from "../TipsBox";
+
 import Progress from "../Progress";
-import ButtonAddMore from "../shared/ButtonAddMore";
-import ButtonRemove from "../shared/ButtonRemove";
-import FormInput from "components/FormInput";
+import TipsBox from "../TipsBox";
+import ButtonAddMore from "components/shared/ButtonAddMore";
+import ButtonRemove from "components/shared/ButtonRemove";
+import FormInput from "components/Forms/FormInput";
 import { addElement, removeElement } from "components/Forms/formFunctions";
 
-export default function Education({ form, setForm, setDisplay }) {
-  const formSection = form.education;
+export default function TabCertification({ form, setForm, setDisplay }) {
+  const formSection = form.certification;
   const [quantity, setQuantity] = useState(Array(formSection.length).fill(0));
   const {
     register,
@@ -20,10 +19,9 @@ export default function Education({ form, setForm, setDisplay }) {
   } = useForm();
 
   function onSubmit(data) {
-    setForm({ ...form, education: data });
+    setForm({ ...form, certification: data });
   }
 
-  //Component
   const Fields = quantity.map((item, index) => (
     <div className="box" key={index}>
       {quantity.length > 1 && index > 0 && (
@@ -31,37 +29,15 @@ export default function Education({ form, setForm, setDisplay }) {
           onClick={(index) => removeElement(index, quantity, setQuantity)}
         />
       )}
-
       <FormInput
         formSection={formSection}
         index={index}
-        labelKey="school"
+        labelKey="domain"
         errors={errors}
         register={register}
         verif={{ required: true, minLength: 3 }}
       >
-        School
-      </FormInput>
-
-      <label className="degree">
-        {/* todo - handle with 2 radio buttons ? */}
-        <h3>Degree ?</h3>
-        <input
-          type="checkbox"
-          defaultValue={formSection[index] ? formSection[index].degree : ""}
-          {...register(`${index}degree`, {})}
-        />
-      </label>
-
-      <FormInput
-        formSection={formSection}
-        index={index}
-        labelKey="program"
-        errors={errors}
-        register={register}
-        verif={{ required: true, minLength: 3 }}
-      >
-        Program
+        Certificate {"&"} Training in
       </FormInput>
 
       <FormInput
@@ -79,12 +55,12 @@ export default function Education({ form, setForm, setDisplay }) {
 
   return (
     <>
-      <TipsBox tab="education" />
-      <h1>Education</h1>
-      <img src={education} alt="" className="logo" />
+      <TipsBox tab="certification" />
+      <h1 className="certification-title">Certification {"&"} Training</h1>
+      <img src={certification} alt="" className="logo certification-logo" />
 
-      <section className="education">
-        <form onSubmit={handleSubmit(onSubmit)} id="formEducation">
+      <section className="certification-training">
+        <form onSubmit={handleSubmit(onSubmit)} id="formCertification">
           {Fields}
           <ButtonAddMore onClick={() => addElement(quantity, setQuantity)}>
             Add more
@@ -92,10 +68,10 @@ export default function Education({ form, setForm, setDisplay }) {
           <input type="submit" className="hidden" id="submit-form" />
         </form>
       </section>
-      <Progress progress={30} />
+      <Progress progress={55} />
       <div className="buttons">
         <button
-          onClick={() => setDisplay("contact")}
+          onClick={() => setDisplay("education")}
           className="btn btn-gray back"
         >
           Back
@@ -104,7 +80,7 @@ export default function Education({ form, setForm, setDisplay }) {
           Save
         </label>
         <button
-          onClick={() => setDisplay("certification & training")}
+          onClick={() => setDisplay("work history")}
           className="btn btn-blue next"
         >
           Next

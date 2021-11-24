@@ -1,17 +1,19 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import Progress from "./Progress";
-import TipsBox from "./TipsBox";
-import ButtonAddMore from "./shared/ButtonAddMore";
-import checklist from "assets/icns/checklist.png";
+import Progress from "../../Progress";
+import TipsBox from "../../TipsBox";
+import ButtonAddMore from "../../shared/ButtonAddMore";
 import job from "assets/icns/job.png";
+import trophy from "assets/icns/trophy.png";
 
-export default function TabResponsibilities({
+export default function TabAccomplishments({
   form,
   setForm,
   setDisplay,
-  jobId
+  jobId,
+  setJobId,
+  numberOfItems,
 }) {
   const [quantity, setQuantity] = useState([0, 0, 0]);
   const {
@@ -31,39 +33,46 @@ export default function TabResponsibilities({
 
   const Fields = quantity.map((item, index) => (
     <li key={index}>
-      <label className="responsibility">
+      <label className="accomplishment">
         <input
           type="text"
-          defaultValue={form.work_history[jobId - 1].responsibilities[index]}
-          {...register(`${index}responsability`, {
+          defaultValue={form.work_history[jobId - 1].accomplishments[index]}
+          {...register(`${index}accomplishment`, {
             required: true,
             minLength: 10,
           })}
         />
-        {errors.[`${index}responsability`] &&  <p className="input-error">Enter Valid Information({'>'} 10 chars) </p>}
+        {errors[`${index}accomplishment`] && (
+          <p className="input-error">
+            Enter Valid Information({">"} 10 chars){" "}
+          </p>
+        )}
       </label>
     </li>
   ));
 
   return (
     <>
-      <TipsBox tab="responsibilities" />
-      <h1 className="certification-title">Job {jobId} Responsibilities</h1>
+      <TipsBox tab="accomplishments" />
+      <h1 className="certification-title">Job {jobId} Accomplishments</h1>
       <img src={job} alt="" className="logo certification-logo" />
 
-      <section className="responsibilities">
-        <h3>Let's start with </h3>
-        <h2>{form.work_history[jobId - 1].company } - {form.work_history[jobId - 1].title }</h2>
+      <section className="accomplishments">
+        <h3>While you were working at</h3>
+        <h2>
+          {form.work_history[jobId - 1].company} as{" "}
+          {form.work_history[jobId - 1].title}
+        </h2>
 
-        <form onSubmit={handleSubmit(onSubmit)} id="formResponsibilities">
+        <form onSubmit={handleSubmit(onSubmit)} id="formAccomplishments">
           <div className="box">
-            <img src={checklist} alt="" className="checklist" />
+            <img src={trophy} alt="" className="checklist" />
             <h3 className="label">
-              If you had to describe what you did daily or weekly, what would
-              you list ?
+              What were you the proudest of? Did you launch anything special?
+              Did you initiate anything ?
             </h3>
             <p>
-              <strong>Don’t worry about grammar, just start writing!</strong>
+              <strong>Think carefully! </strong>
             </p>
             <ul className="fields">{Fields}</ul>
           </div>
@@ -87,7 +96,15 @@ export default function TabResponsibilities({
           Save
         </label>
         <button
-          onClick={() => setDisplay("accomplishments")}
+          onClick={() => {
+            if (jobId < numberOfItems) {
+              setDisplay("responsibilities");
+              const newJobId = jobId + 1;
+              setJobId(newJobId);
+            } else {
+              setDisplay("summaries");
+            }
+          }}
           className="btn btn-blue next"
         >
           Next
