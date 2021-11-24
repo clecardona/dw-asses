@@ -26,6 +26,8 @@ export default function Preview() {
     highlights,
   } = mockup;
 
+  console.log(mockup);
+
   return (
     <main className="page-preview">
       <h1>Preview</h1>
@@ -45,9 +47,9 @@ export default function Preview() {
       </div>
 
       <div className={`a4 ${style}`}>
-        <Title contact={contact} role={role} />
-        {photo && <Photo contact={contact} />}
-        <Contact contact={contact} />
+        <Title contact={contact[0]} role={role} />
+        {photo && <Photo contact={contact[0]} />}
+        <Contact contact={contact[0]} />
         <Highlights highlights={highlights} />
         <Languages languages={additional_info.languages} />
         <Skills skills={additional_info.additional_skills} />

@@ -33,6 +33,7 @@ export default function Contact({ form, setForm, setDisplay }) {
       labelKey={item.labelKey}
       verif={item.verif}
       type={!item.type ? "text" : item.type}
+      tip={item.tip}
     >
       {item.label}
     </FormInput>

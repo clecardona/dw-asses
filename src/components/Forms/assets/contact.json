@@ -29,7 +29,8 @@
   {
     "label": "LinkedIn ",
     "labelKey": "linkedin",
-    "verif": { "required": true, "minLength": 15 }
+    "verif": { "required": true, "minLength": 15 },
+    "tip": "We strongly recommend adding your LinkedIn address!It will be easier for recruiters and managers to find you!!And did you know that you can create a direct link (URL) for your LinkedIn profile? For example, instead of www.linkedin.com/in/johndoe1234323243 you can get www.linkedin.com/in/johndoe instead! We’re going to talk about your LinkedIn profile more and more as we move forward. So remember to keep checking our tips!"
   },
   {
     "label": "Address ",
