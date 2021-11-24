@@ -7,7 +7,6 @@ import { Link, useHistory } from "react-router-dom";
 import fields from "./assets/fields-recover.json";
 import InputField from "../shared/InputField";
 import { recover } from "scripts/auth";
-import fletnixBg from "assets/img/fletnixBg.jpeg";
 
 export default function Recover() {
   //Local states
@@ -37,16 +36,6 @@ export default function Recover() {
     setMessage(errorMessage);
   }
 
-  function setStyle() {
-    document.getElementById("footer").style.background = "";
-    document.getElementById("footer").style.borderTop = "";
-    document.getElementById("header").style.background = "";
-  }
-
-  useEffect(() => {
-    setStyle();
-  }, []);
-
   //Components
   const Fields = fields.map((item) => (
     <InputField
@@ -56,24 +45,33 @@ export default function Recover() {
       onChange={onChange}
     />
   ));
+  const imgBg =
+    "https://cdn.dribbble.com/users/257123/screenshots/12096701/media/216ccbb7cbfeccb53e443bafba787550.png?compress=1&resize=1600x1200";
+  const imgIllustration =
+    "https://cdn.dribbble.com/users/427368/screenshots/14239844/media/e12e66ddc8ac84da351f7c917b07d60a.jpg?compress=1&resize=800x600";
+
   return (
-    <main className="page-login recover">
-      <img src={fletnixBg} alt="bg" className="bg" />
-      <div className="logo">Fletnix</div>
+    <main className="page-login">
+      <img src={imgBg} alt="" className="bg" />
+
       <div className="bloc">
+        <div className="img-side">
+          <img src={imgIllustration} alt="" />
+        </div>
         <form onSubmit={onSubmit}>
+          <h1 className="title">Password lost ?</h1>
+          <h2>Don't worry we got your back, Just enter your email.</h2>
           {Fields}
           <p>{message}</p>
-          <button className="btn-signin">
-            <h4>Recover Password</h4>
-          </button>
+          <button className="btn btn-blue">Recover Password</button>
+
+          <p className="optional-action">
+            Not yet a member ?&nbsp;
+            <Link to="/signup">
+              <strong>Sign up now.</strong>
+            </Link>
+          </p>
         </form>
-        <p className="optional-action">
-          New to Fletnix ?&nbsp;
-          <Link to="/signup">
-            <strong>Sign up now.</strong>
-          </Link>
-        </p>
       </div>
     </main>
   );

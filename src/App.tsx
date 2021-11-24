@@ -41,7 +41,7 @@ export default function App() {
       {status === 2 && <BoxError />}
       {status === 1 && (
         <BrowserRouter>
-          <Switch>{true ? <Logged /> : <Unlogged />}</Switch>
+          <Switch>{loggedIn ? <Logged /> : <Unlogged />}</Switch>
           {/* <Footer /> */}
         </BrowserRouter>
       )}

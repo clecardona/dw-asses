@@ -4,34 +4,61 @@
     align-items: center
     justify-content: center
     color: $white
+    margin: 0
+    height: 100vh
+    width: 100vw
+    overflow: hidden
+    background: $blue
 
     a:hover
         text-decoration: underline
 
     .bg
+        opacity: 0.7
         z-index: 0
         position: fixed
         top: 0
+        left: 0
+        bottom: 0
+        right: 0
 
-        height: 100vh
-        width: 100vw
         object-fit: cover
         filter: brightness(.25)
 
     .bloc
+        overflow: hidden
         z-index: 10
-        background: $black-transparent-70
-        min-height: 550px
-        padding: 60px 68px 40px
-        margin-bottom: 90px
+        background: $white
+
+        height: 90vh
+        width: 90vw
+
         border-radius: 4px
 
+        display: grid
+        align-items: center
+        grid-template-columns: 1fr min-content
+
+        .img-side
+            overflow: hidden
+            height: 100%
+            display: grid
+            align-items: center
+            img
+                width: 100%
+
         form
-            display: flex
-            flex-direction: column
-            width: 314px
-            h1
-                margin-bottom: 28px
+            display: grid
+            grid-auto-flow: row
+
+            width: 320px
+            height: 100%
+            margin: 0 3em
+            padding: 3em 0
+            .title
+                margin-bottom: .3em
+                color: $blue
+                text-align: right
 
             label
                 &.email,&.password
@@ -51,6 +78,7 @@
 
             .remember-recover
                 display: grid
+                align-items: center
                 grid-template-columns: 1fr max-content
                 font-size: 13px
                 color: #b3b3b3
@@ -62,25 +90,18 @@
                     width: 100%
 
                     input[type=checkbox]
-
-                        height: 18px
-                        width: 18px
+                        height: 16px
+                        width: 16px
 
                     p
-                        margin-left: 3px
+                        margin-left: 1em
                         text-align: left
                 .help
                     text-align: right
-        .optional-action
-            margin-top: 32px
-            color: #737373
-            font-size: 16px
-            a
-                color: $white
 
-    .footer-background
-        position: absolute
-        bottom: 0
-        height: $footer-height
-        width: 100%
-        background: $black-transparent-70
+            .optional-action
+                margin-top: 1em
+                color: #737373
+                font-size: 16px
+                a
+                    color: $blue

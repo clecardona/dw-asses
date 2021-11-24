@@ -14,7 +14,6 @@ export default function InputField({ onChange, options, state }) {
     <>
       {key !== "description" && (
         <label className={key}>
-          {label} :
           <input
             ref={inputReference}
             value={state}

@@ -6,7 +6,7 @@ import reactDom from "react-dom";
 
 import burger from "assets/icns/burger.png";
 import cross from "assets/icns/cross.png";
-import SorterNav from "components/SorterNav";
+import SorterNav from "components/Header/SorterNav";
 
 interface IProps {
   setDisplay(): void;

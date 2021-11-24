@@ -3,7 +3,7 @@
 import box from "assets/icns/box.png";
 import { useForm } from "react-hook-form";
 
-import FieldAdditional from "../FieldAdditional";
+import FieldAdditional from "./FieldAdditional";
 import Progress from "../Progress";
 
 //Local imports

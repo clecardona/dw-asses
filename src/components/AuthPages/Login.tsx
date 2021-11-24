@@ -1,8 +1,7 @@
 //@ts-nocheck
 //NPM Packages
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import fletnixBg from "assets/img/fletnixBg.jpeg";
 
 //Local imports
 import fields from "./assets/fields-login.json";
@@ -46,38 +45,32 @@ export default function Login() {
     setMessage(code);
   }
 
-  function setStyle() {
-    document.getElementById("footer").style.background = "";
-    document.getElementById("footer").style.borderTop = "";
-    document.getElementById("header").style.background = "";
-  }
-
-  useEffect(() => {
-    setStyle();
-  }, []);
-
   //Components
   const Fields = fields.map((item, index) => (
-    <div key={index}>
-      <InputField
-        key={item.key}
-        options={item}
-        state={form[item.key]}
-        onChange={onChange}
-      />
-    </div>
+    <InputField
+      key={item.key}
+      options={item}
+      state={form[item.key]}
+      onChange={onChange}
+    />
   ));
+  const imgBg =
+    "https://cdn.dribbble.com/users/257123/screenshots/12096701/media/216ccbb7cbfeccb53e443bafba787550.png?compress=1&resize=1600x1200";
 
+  const imgIllustration =
+    "https://cdn.dribbble.com/users/1355613/screenshots/15392110/media/f53244c89ed7ee88b5249bce3374462c.jpg?compress=1&resize=1400x900";
   return (
     <>
       <main className="page-login">
-        <img src={fletnixBg} alt="bg" className="bg" />
+        <img src={imgBg} alt="" className="bg" />
 
         <div className="bloc">
+          <div className="img-side">
+            <img src={imgIllustration} alt="" />
+          </div>
           <form onSubmit={onSubmit}>
             <h1 className="title">Sign In</h1>
             {Fields}
-            <p className="error-firebase">{message}</p>
 
             <div className="remember-recover">
               <label className="remember">
@@ -89,19 +82,20 @@ export default function Login() {
                 <p>Remember me</p>
               </label>
               <Link to="/recover" className="help">
-                Need help?
+                Lost your password ?
               </Link>
             </div>
 
-            <button className="btn-signin">Sign In</button>
-          </form>
+            <button className="btn btn-blue">Sign In</button>
+            <p className="error-firebase">{message}</p>
 
-          <p className="optional-action">
-            New to Fletnix ?&nbsp;
-            <Link to="/signup">
-              <strong>Sign up now.</strong>
-            </Link>
-          </p>
+            <p className="optional-action">
+              Not yet a member ?&nbsp;
+              <Link to="/signup">
+                <strong>Sign up now.</strong>
+              </Link>
+            </p>
+          </form>
         </div>
       </main>
     </>

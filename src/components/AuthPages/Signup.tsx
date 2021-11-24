@@ -46,16 +46,6 @@ export default function Signup() {
     setMessage(code);
   }
 
-  function setStyle() {
-    document.getElementById("footer").style.background = "#f3f3f3";
-    document.getElementById("footer").style.borderTop = "1px solid #E5E5E5";
-    document.getElementById("header").style.background = "white";
-  }
-
-  useEffect(() => {
-    setStyle();
-  }, []);
-
   //Components
   const Fields = fields.map((item) => (
     <InputField
@@ -65,21 +55,32 @@ export default function Signup() {
       onChange={onChange}
     />
   ));
+  const imgBg =
+    "https://cdn.dribbble.com/users/257123/screenshots/12096701/media/216ccbb7cbfeccb53e443bafba787550.png?compress=1&resize=1600x1200";
+
+  const imgIllustration =
+    "https://cdn.dribbble.com/users/1355613/screenshots/15392110/media/f53244c89ed7ee88b5249bce3374462c.jpg?compress=1&resize=1400x900";
 
   return (
     <>
-      <Link to="/" className="signin">
-        <strong>Sign In</strong>
-      </Link>
-
-      <main className="page-signup ">
+      <main className="page-login">
+        <img src={imgBg} alt="" className="bg" />
         <div className="bloc">
+          <div className="img-side">
+            <img src={imgIllustration} alt="" />
+          </div>
           <form onSubmit={onSubmit}>
             <h1 className="title">Sign Up</h1>
             <h2>Just a few more steps and you're finished!</h2>
             {Fields}
+            <button className="btn btn-blue">Sign Up</button>
             <p>{message}</p>
-            <button className="btn btn-signup">Sign Up</button>
+            <p className="optional-action">
+              Already member ?&nbsp;
+              <Link to="/">
+                <strong>Sign In.</strong>
+              </Link>
+            </p>
           </form>
         </div>
       </main>

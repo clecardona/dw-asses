@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import ButtonAddMore from "./shared/ButtonAddMore";
-import ButtonRemove from "./shared/ButtonRemove";
+import ButtonAddMore from "../shared/ButtonAddMore";
+import ButtonRemove from "../shared/ButtonRemove";
 
 export default function FieldAdditional({
   form,

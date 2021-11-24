@@ -1,3 +1,5 @@
+import Logger from "./Logger";
+
 export default function SorterNav({ display, setDisplay, setJobId }) {
   const links = [
     "start",
@@ -27,5 +29,10 @@ export default function SorterNav({ display, setDisplay, setJobId }) {
     </li>
   ));
 
-  return <ul className="sorter-nav">{Links}</ul>;
+  return (
+    <>
+      <ul className="sorter-nav">{Links}</ul>
+      <Logger />
+    </>
+  );
 }

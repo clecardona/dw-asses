@@ -1,8 +1,26 @@
 header
-  widows: 100%
+
+  width: 100%
   height: $header-height
 
   display: flex
   justify-content: flex-end
   align-items: center
   padding: 1em
+
+  .logger
+    position: absolute
+    right: 0
+    display: grid
+    grid-template-columns: repeat(3,80px)
+
+    align-items: center
+    justify-items: center
+
+    padding-bottom: .5em
+    .btn-logger
+      height: 50%
+      &:hover
+        h4
+          color: $blue
+          font-weight: 300

@@ -4,7 +4,7 @@ import { FC, useState } from "react";
 
 //Local Files
 import mockup from "assets/backup/mockup.json";
-import Header from "components/shared/Header";
+import Header from "components/Header/Header";
 import TabStart from "components/Forms/TabStart";
 import TabContact from "components/Forms/TabContact";
 import TabEducation from "components/Forms/TabEducation";
