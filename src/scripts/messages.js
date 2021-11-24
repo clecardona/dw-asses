@@ -4,7 +4,11 @@ export default function getFriendlyError(errorCode) {
       return "Oops, you entered a wrong password";
 
     case "auth/too-many-requests":
-      return "Oops, too many request submitted, please try again  later";
+      return "Sorry, too many request submitted, please try again  later";
+
+    case "auth/user-not-found":
+      return "Sorry, this email is not in our database";
+
     default:
       return errorCode;
   }
