@@ -1,6 +1,5 @@
 # Daniel Wellington Assessment
 
-![img](https://www.lingo24.com/wp-content/uploads/2018/08/daniel-wellington.jpg)
 ![DW](https://www.lingo24.com/wp-content/uploads/2018/08/daniel-wellington.jpg)
 
 [![react](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
