@@ -1,49 +1,50 @@
 //@ts-nocheck
 //NPM Packages
-import { useState, useCallback, useEffect } from "react";
-import { BrowserRouter, Switch } from "react-router-dom";
+import { useState } from "react";
 
 //Local Files
 import "styles/base.sass";
-import { useAuth } from "state/AuthProvider";
-import { getDocument } from "scripts/fireStore";
-import Logged from "routes/Logged";
-import Unlogged from "routes/Unlogged";
-import Footer from "components/shared/Footer";
+import useFetch from "hooks/useFetch";
+
 import { BoxError, Spinner } from "components/shared/FetchItems";
+import Card from "components/Card";
 
 export default function App() {
-  // Global state
-  const { loggedIn, setLoggedIn, setUser } = useAuth();
-
   //Local state
-  const [status, setStatus] = useState(0); // 0 loading, 1 ready, 2 error
+  const [quantity, setQuantity] = useState(5);
+  const products = useFetch(quantity);
+  //console.log(products.data);
 
-  // Methods
-  const fetchUser = useCallback(
-    async (path) => {
-      const uid = localStorage.getItem("uid");
-      if (uid) {
-        const user = await getDocument(path, uid);
-        setUser(user);
-        setLoggedIn(true);
-      }
-      setStatus(1);
-    },
-    [setUser, setLoggedIn]
-  );
-
-  useEffect(() => fetchUser("users"), [fetchUser]);
+  //Constants
+  const Cards = products.data.map((item) => (
+    <Card key={item.sku} item={item} />
+  ));
 
   return (
     <div className="App">
-      {status === 0 && <Spinner />}
-      {status === 2 && <BoxError />}
-      {status === 1 && (
-        <BrowserRouter>
-          <Switch>{loggedIn ? <Logged /> : <Unlogged />}</Switch>
-          {/* <Footer /> */}
-        </BrowserRouter>
+      {products.loading && <Spinner />}
+      {products.error && <BoxError />}
+      {!products.error && !products.loading && (
+        <>
+          <header>DW</header>
+          <main>
+            <label>
+              Items to display : {quantity}
+              <select
+                name="qty"
+                defaultValue={5}
+                onChange={(e) => setQuantity(e.target.value)}
+              >
+                <option value={5}>5</option>
+                <option value={10}>10</option>
+                <option value={20}>20</option>
+                <option value={100}>show all</option>
+              </select>
+            </label>
+
+            <ul className="container">{Cards}</ul>
+          </main>
+        </>
       )}
     </div>
   );

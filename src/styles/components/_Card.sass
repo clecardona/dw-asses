@@ -1,0 +1,39 @@
+.card
+    position: relative
+    overflow: hidden
+    display: grid
+    row-gap: 3px
+    grid-auto-flow: row
+    height: min-content
+    width: 250px
+    &:hover
+        box-shadow: 2px 2px 8px rgba(0,0,0,.12)
+
+    .illustration
+        width: 100%
+        background: #fafafa
+        height: 250px
+        width: 100%
+        object-fit: contain
+
+    .btn-previous
+        position: absolute
+        top: 30%
+        left: 0
+        &:hover
+            transform: scale(1.1)
+            transition: .3s ease
+    .btn-next
+        position: absolute
+        top: 30%
+        right: 0
+        &:hover
+            transform: scale(1.1)
+            transition: .3s ease
+    .index
+        position: absolute
+        top: .3em
+        right: .3em
+        color: $gray4
+    .name,.color,.price,.btn-view-more
+        padding: 0 18px

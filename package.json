@@ -1,7 +1,7 @@
 {
-  "name": "greg-cv-maker",
+  "name": "dw-asses",
   "version": "0.1.0",
-  "private": false,
+  "private": null,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -49,9 +49,9 @@
   "devDependencies": {
     "@types/react-router-dom": "^5.3.2"
   },
-  "description": "a cv maker for thejobcoach.se",
+  "description": "dw assessment",
   "main": "index.js",
-  "repository": "https://github.com/clecardona/cv-maker",
+  "repository": "https://github.com/clecardona/dw-asses.git",
   "author": "clecardona <clecardona@gmail.com>",
   "license": "MIT"
 }
