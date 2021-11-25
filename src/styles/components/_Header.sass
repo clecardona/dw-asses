@@ -1,6 +1,38 @@
 header
-  background: $black
+  background: #02081C
   color: white
   height: $header-height
+  display: grid
+  grid-template-columns: max-content 1fr
+  align-items: center
 
   padding: 2em
+  border-bottom: 1px solid #313121
+
+  h2
+    color: #7e7e56
+    letter-spacing: 0.3em
+
+  nav
+    display: grid
+    gap: 1em
+    grid-auto-flow: column
+    grid-auto-columns: max-content
+    align-items: center
+    justify-items: center
+    padding: 0 2em
+
+    .nav-item
+      cursor: pointer
+
+      h3,h4,p
+        color: $white
+        text-transform: uppercase
+        font-weight: 200
+        letter-spacing: 0.2em
+        border-bottom: 1px solid transparent
+
+      &:hover
+        h3,h4,p
+          transition: .3s ease
+          border-bottom: 1px solid $white

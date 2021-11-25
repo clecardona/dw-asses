@@ -1,7 +1,8 @@
+//NPM Packages
 import { useEffect, useState } from "react";
 
 export default function useFetch(quantity) {
-  // STATES
+  // States
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -12,9 +13,13 @@ export default function useFetch(quantity) {
   async function combineData(quantity) {
     const allProducts = await fetchData(PRODUCTS_URL, "products");
     const allImages = await fetchData(IMAGES_URL, "images");
-    const products = [...allProducts.slice(0, quantity)];
 
-    const result = products.map((item, index) => {
+    let itemToDisplay = quantity;
+    if (quantity === "all") {
+      itemToDisplay = allProducts.length;
+    }
+    const products = [...allProducts.slice(0, itemToDisplay)];
+    const result = products.map((item) => {
       return { ...item, images: allImages[item.sku] };
     });
     setData(result);
@@ -34,10 +39,9 @@ export default function useFetch(quantity) {
     }
   }
 
-  //hook
   useEffect(() => {
     combineData(quantity);
-  }, [combineData /* quantity */]);
+  }, [quantity]);
 
   return { data, error, loading };
 }
