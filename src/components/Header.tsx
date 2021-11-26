@@ -1,7 +1,9 @@
+//NPM Packages
+import { FC } from "react";
 //Local Files
 import links from "assets/nav/links.json";
 
-export default function Header() {
+const Header: FC = () => {
   const Links = links.map((item, index) => (
     <div className="nav-item" key={index}>
       <a href={item.url} target="_blank" rel="noopener noreferrer">
@@ -15,4 +17,5 @@ export default function Header() {
       <nav>{Links}</nav>
     </header>
   );
-}
+};
+export default Header;

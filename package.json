@@ -26,7 +26,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build & deploy": "react-scripts build && firebase deploy"
+    "build & deploy": "react-scripts build && firebase deploy",
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": [
